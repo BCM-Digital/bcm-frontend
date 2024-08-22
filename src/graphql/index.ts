@@ -1,6 +1,7 @@
 import { CONTACT, GLOBALS } from '@graphql/globals'
 import { PAGE, PAGES } from '@graphql/pages'
-import { Contact,  Header, Page, Footer } from '@types'
+import { PROJECT, PROJECTS } from '@graphql/projects'
+import { Contact, Header, Page, Project, Footer } from '@types'
 
 const next = {
 	revalidate: 600,

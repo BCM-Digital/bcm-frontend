@@ -2,9 +2,12 @@ import { META_FIELDS } from '@graphql/meta'
 import {
 	CALL_TO_ACTION_BLOCK,
 	CARDS_BLOCK,
-	CONTACT_FORM_BLOCK, IMAGE_SLIDER_BLOCK,
+	CONTACT_FORM_BLOCK,
+	IMAGE_SLIDER_BLOCK,
 	MEDIA_AND_CONTENT_BLOCK,
-	MEDIA_BLOCK, QUESTIONS_BLOCK, TABS_BLOCK,
+	MEDIA_BLOCK,
+	PROJECT_GRID,
+	TABS_BLOCK,
 } from '@graphql/blocks'
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
@@ -46,7 +49,7 @@ export const PAGE = `
         	${IMAGE_SLIDER_BLOCK}
         	${MEDIA_AND_CONTENT_BLOCK}		
         	${MEDIA_BLOCK}
-        	${QUESTIONS_BLOCK}
+        	${PROJECT_GRID}
         	${TABS_BLOCK}		
         }
         meta ${META_FIELDS}

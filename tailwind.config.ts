@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 
+const defaultTheme = require('tailwindcss/defaultTheme')
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -28,8 +29,7 @@ const config: Config = {
       desktop: '100rem', // 1600px
     },
     fontFamily: {
-      heading: ['var(--font-poppins)', 'sans-serif'],
-      body: ['var(--font-lora)', 'serif'],
+      body: ['var(--font-nunito-sans)', ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
       h1: [

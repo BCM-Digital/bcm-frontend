@@ -21,7 +21,7 @@ function Logo({ className }: LogoType): ReactElement {
 			<svg
 				viewBox="0 0 2858 992"
 				xmlns="http://www.w3.org/2000/svg"
-				className="h-12 fill-current opacity-90"
+				className="h-12 fill-current transition hover:opacity-100"
 			>
 				<g transform="matrix(1,0,0,1,-325,-744)">
 					<g transform="matrix(4.16667,0,0,4.16667,0,0)">

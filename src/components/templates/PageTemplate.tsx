@@ -24,7 +24,7 @@ function PageTemplate({ page }: PageTemplateProps): ReactElement {
 	return (
 		<Fragment>
 			<PageHead {...pageHead} />
-			<Main className="">
+			<Main className="p-5">
 				{layout && (
 					<RenderBlocks
 						className="space-y-20 tablet-landscape:space-y-24 laptop:space-y-30"

@@ -1,7 +1,7 @@
 import { LINK_FIELDS } from '@graphql/link'
 import { EMBEDDED_VIDEO_FIELDS, MEDIA_FIELDS } from '@graphql/media'
+import { META_FIELDS } from '@graphql/meta'
 import { FORM_FIELDS } from '@graphql/form'
-
 
 export const CALL_TO_ACTION_BLOCK = `
 ...on CallToActionBlock {
@@ -85,7 +85,6 @@ export const IMAGE_SLIDER_BLOCK = `
 }
 `
 
-
 export const MEDIA_AND_CONTENT_BLOCK = `
 ...on MediaAndContentBlock {
 	id
@@ -121,26 +120,29 @@ export const MEDIA_BLOCK = `
 }
 `
 
-export const QUESTIONS_BLOCK = `
-...on QuestionsBlock {
+export const PROJECT_GRID = `
+...on ProjectGrid {
 	id
 	blockName
 	blockType
-	questionsBlockFields {
-	  anchorId
-	  breadcrumb
-		title
-		richText
-		links {
-		    link ${LINK_FIELDS()}
+	projectGridFields {
+		introText
+		tiles {
+			type
+			size
+			project {
+				id
+				slug
+				title
+			}
+			image ${MEDIA_FIELDS}
+			tileText
+			invertBackground
 		}
-		faqs {
-			title
-			richText			
-		}  
 	}
 }
 `
+
 export const TABS_BLOCK = `
 ...on TabsBlock {
 	id

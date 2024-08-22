@@ -22,7 +22,7 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 	const scrollInfo = useScrollInfo()
 	const route = usePathname()
 	const [showHeader, setShowHeader] = useState<boolean>(true)
-	const { mainMenu, headerButtons } = header
+	const { mainMenu } = header
 	const { socialMedia, contactDetails } = contact
 	/**
 	 * Handle toggling mobile navigation
@@ -64,11 +64,7 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 
 	//
 	const classes = clsx(
-		'site-header fixed top-0 inset-x-0  flex flex-row items-center z-90 h-18',
-		showHeader
-			? 'translate-none opacity-100 duration-300'
-			: '-translate-y-full opacity-0 duration-500',
-		'tablet-landscape:h-20'
+		'site-header  flex flex-row items-center z-90 sticky top-0 bg-white py-5'
 	)
 
 	return (
@@ -79,18 +75,16 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 					id="site-header"
 					className={classes}
 				>
-					<Corridor>
-						<div className="flex flex-row items-center justify-between">
-							<Logo className="text-white" />
-							<div className="flex flex-row items-center justify-end space-x-4 tablet-landscape:justify-start tablet-landscape:space-x-6 laptop:space-x-10">
-								<div className="flex items-center space-x-4">
-									{mainMenu &&
-										mainMenu.menuItem &&
-										mainMenu.menuItem.length > 0 && <MenuIcon />}
-								</div>
+					<div className="flex w-full flex-row items-center justify-between px-5">
+						<Logo className="text-dark" />
+						<div className="flex flex-row items-center justify-end space-x-4 tablet-landscape:justify-start tablet-landscape:space-x-6 laptop:space-x-10">
+							<div className="flex items-center space-x-4">
+								{mainMenu &&
+									mainMenu.menuItem &&
+									mainMenu.menuItem.length > 0 && <MenuIcon />}
 							</div>
 						</div>
-					</Corridor>
+					</div>
 				</motion.header>
 				{mainMenu && mainMenu.menuItem && <MobileNavigation menu={mainMenu} />}
 			</Fragment>

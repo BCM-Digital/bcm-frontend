@@ -7,10 +7,7 @@ type GridProps = {
 }
 
 function Grid({ children, className }: GridProps): ReactElement {
-	const classes = clsx(
-		'grid grid-cols-4 gap-8 tablet:grid-cols-8 tablet:gap-x-8 tablet-landscape:grid-cols-12 tablet-landscape:gap-y-8',
-		className
-	)
+	const classes = clsx('grid grid-cols-12 gap-5', className)
 
 	return <div className={classes}>{children}</div>
 }

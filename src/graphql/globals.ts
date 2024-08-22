@@ -6,9 +6,6 @@ export const GLOBALS = `
         mainMenu {
           ${MENU_FIELDS}
         }
-        headerButtons {	    
-          link ${LINK_FIELDS()}  
-        }
     }
     Footer {
         footerRichText
