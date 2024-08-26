@@ -14,7 +14,7 @@ function Main({
 	children,
 	style,
 }: MainProps): ReactElement {
-	const classes = clsx('main py-20 tablet-landscape:py-24 laptop:py-30', className)
+	const classes = clsx('main', className)
 
 	return (
 		<main style={style} id={id} className={classes}>

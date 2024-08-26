@@ -1,5 +1,6 @@
 import { MENU_FIELDS } from '@graphql/menu'
 import { LINK_FIELDS } from '@graphql/link'
+
 export const GLOBALS = `
   query {  
     Header {
@@ -64,4 +65,17 @@ export const CONTACT = `
         }
     }        
   }
+`
+
+export const SETTINGS = `
+	query {
+		Settings {
+			postsPage {
+				slug
+			}
+			projectsPage {
+				slug
+			}
+		} 
+	}
 `

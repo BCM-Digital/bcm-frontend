@@ -15,10 +15,10 @@ type HeroProps = PageHead & {
 
 function Hero({ title, content, media, links }: HeroProps): ReactElement {
 	const classes = clsx(
-		'hero scroll-margin-top @container relative text-white overflow-hidden aspect-video px-5'
+		'hero scroll-margin-top @container relative text-white overflow-hidden aspect-video mx-5'
 	)
 	const contentClasses = clsx(
-		'absolute z-20 inset-5 flex flex-col justify-end pt-28 pb-12 tablet-landscape:justify-center tablet-landscape:pb-14 tablet-landscape:pt-34 laptop:pb-16 laptop:pt-36'
+		'absolute z-20 inset-0 flex flex-col justify-end pt-28 pb-12 tablet-landscape:justify-center tablet-landscape:pb-14 tablet-landscape:pt-34 laptop:pb-16 laptop:pt-36'
 	)
 	const imageClasses = clsx('relative z-0 overflow-hidden w-screen')
 	return (

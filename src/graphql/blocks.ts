@@ -1,27 +1,59 @@
+import { CATEGORIES } from '@graphql/categories'
+import { FORM_FIELDS } from '@graphql/form'
 import { LINK_FIELDS } from '@graphql/link'
 import { EMBEDDED_VIDEO_FIELDS, MEDIA_FIELDS } from '@graphql/media'
 import { META_FIELDS } from '@graphql/meta'
-import { FORM_FIELDS } from '@graphql/form'
 
-export const CALL_TO_ACTION_BLOCK = `
-...on CallToActionBlock {
-	id
-	blockName
-	blockType
-	ctaBlockFields {
-	  anchorId
-		gridLayout
-		cta {
-			id
-			type
-			title
-			richText
-			links {
-					link ${LINK_FIELDS()}
-			}
-			featureImage ${MEDIA_FIELDS} 			
-		}   
+export const ARCHIVE_BLOCK = `
+...on Archive {
+  id
+  blockName
+  blockType
+  archiveBlockFields
+  {
+	introContent
+	populateBy
+	relationTo
+	${CATEGORIES}
+	limit
+	selectedDocs {
+	  relationTo
+	  value {
+		...on Post {
+		  id
+		  slug
+		  title
+		  ${META_FIELDS}
+		}
+		...on Project {
+		  id
+		  slug
+		  title
+		  ${META_FIELDS}
+		}
+	  }
 	}
+	populatedDocs {
+	  relationTo
+	  value {
+		...on Post {
+		  id
+		  slug
+		  title
+		  ${CATEGORIES}
+		  ${META_FIELDS}
+		}
+		...on Project {
+		  id
+		  slug
+		  title
+		  ${CATEGORIES}
+		  ${META_FIELDS}
+		}
+	  }
+	}
+	populatedDocsTotal
+  }
 }
 `
 
@@ -129,11 +161,23 @@ export const PROJECT_GRID = `
 		introText
 		tiles {
 			type
-			size
+			width
+			height
 			project {
 				id
 				slug
 				title
+				thumbnail ${MEDIA_FIELDS}
+				pageHead {
+					type
+					subhead
+					title
+					content
+					links {
+						link ${LINK_FIELDS()}
+					}
+					media ${MEDIA_FIELDS}
+				}
 			}
 			image ${MEDIA_FIELDS}
 			tileText

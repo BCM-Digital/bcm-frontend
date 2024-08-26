@@ -25,6 +25,17 @@ body::-webkit-scrollbar {
 	scrollbar-width: none; /* Firefox */
 }
 
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply hyphens-auto;
+	}
+}
+
 @layer utilities {
 	.scroll-margin-top {
 		scroll-margin-top: 5rem;
@@ -43,7 +54,6 @@ body::-webkit-scrollbar {
 		-webkit-text-fill-color: white;
 		@apply text-white;
 	}
-
 
 	.modal {
 		@apply translate-y-4 opacity-0 transition-all duration-250;

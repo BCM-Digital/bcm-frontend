@@ -1,6 +1,5 @@
-import { META_FIELDS } from '@graphql/meta'
 import {
-	CALL_TO_ACTION_BLOCK,
+	ARCHIVE_BLOCK,
 	CARDS_BLOCK,
 	CONTACT_FORM_BLOCK,
 	IMAGE_SLIDER_BLOCK,
@@ -11,6 +10,7 @@ import {
 } from '@graphql/blocks'
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
+import { META_FIELDS } from '@graphql/meta'
 
 export const PAGES = `
   query Pages {
@@ -34,7 +34,7 @@ export const PAGE = `
         title
         pageHead {
         	type
-        	breadcrumb
+        	subhead
         	title
         	content
         	links {
@@ -43,7 +43,6 @@ export const PAGE = `
         	media ${MEDIA_FIELDS}
         }
         layout {
-        	${CALL_TO_ACTION_BLOCK}
         	${CARDS_BLOCK}
         	${CONTACT_FORM_BLOCK}
         	${IMAGE_SLIDER_BLOCK}
@@ -52,7 +51,6 @@ export const PAGE = `
         	${PROJECT_GRID}
         	${TABS_BLOCK}		
         }
-        meta ${META_FIELDS}
         breadcrumbs {
           url
           label

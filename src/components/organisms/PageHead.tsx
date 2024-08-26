@@ -4,22 +4,25 @@ import { ReactElement } from 'react'
 import BasicPageHeader from '@components/molecules/BasicPageHeader'
 import Hero from '@components/molecules/Hero'
 
-
 type PageHeadProps = PageHeadType
 
 function PageHead({
 	type,
 	title,
 	content,
-	breadcrumb,
+	subhead,
 	media,
-	links
+	links,
 }: PageHeadProps): ReactElement | null {
 	switch (type) {
 		case 'basic':
-			return <BasicPageHeader  breadcrumb={breadcrumb} title={title} content={content} />
-		case 'hero' :
-			return <Hero title={title} content={content} media={media} links={links} />
+			return (
+				<BasicPageHeader subhead={subhead} title={title} content={content} />
+			)
+		case 'hero':
+			return (
+				<Hero title={title} content={content} media={media} links={links} />
+			)
 		default:
 			return null
 	}

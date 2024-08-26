@@ -10,9 +10,9 @@ import {
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
 
-export const PROJECTS = `
-  query Projects {
-	Projects(limit: 300) {
+export const POSTS = `
+  query Posts {
+	Posts(limit: 300) {
 	  docs {
 		slug
 	  }
@@ -20,9 +20,9 @@ export const PROJECTS = `
   }
 `
 
-export const PROJECT = `
-  query Project($slug: String, $draft: Boolean) {
-	Projects(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
+export const POST = `
+  query Post($slug: String, $draft: Boolean) {
+	Posts(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
 	  docs {
 		id
 		title
@@ -42,6 +42,7 @@ export const PROJECT = `
 			media ${MEDIA_FIELDS}
 		}
 		layout {
+		  
 		  ${CARDS_BLOCK}
 		  ${CONTACT_FORM_BLOCK}
 		  ${IMAGE_SLIDER_BLOCK}
@@ -49,13 +50,13 @@ export const PROJECT = `
 		  ${MEDIA_BLOCK}
 		  ${TABS_BLOCK}		
 		}
-		relatedProjects {
+		relatedPosts {
 		  id
 		  slug
 		  title
-		  meta ${META_FIELDS}
+		  ${META_FIELDS}
 		}
-		meta ${META_FIELDS}
+		${META_FIELDS}
 	  }
 	}
   }

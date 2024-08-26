@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import {
-	CallToActionBlock as CallToActionBlockType,
+	ArchiveBlock as ArchiveBlockType,
 	CardsBlock as CardsBlockType,
 	ContactFormBlock as ContactFormBlockType,
 	ImageSliderBlock as ImageSliderBlockType,
@@ -11,10 +11,6 @@ import {
 } from '@types'
 import dynamic from 'next/dynamic'
 import ImageSliderBlock from '@components/organisms/ImageSliderBlock'
-
-const CallToActionBlock = dynamic(
-	() => import('@components/organisms/CallToActionBlock')
-)
 const CardsBlock = dynamic(() => import('@components/organisms/CardsBlock'))
 const ContactFormBlock = dynamic(
 	() => import('@components/organisms/ContactFormBlock')
@@ -27,7 +23,6 @@ const ProjectGrid = dynamic(() => import('@components/organisms/ProjectGrid'))
 const TabsBlock = dynamic(() => import('@components/organisms/TabsBlock'))
 
 type BlockLayouts =
-	| CallToActionBlockType
 	| CardsBlockType
 	| ContactFormBlockType
 	| ImageSliderBlockType
@@ -42,8 +37,6 @@ interface RenderBlockProps {
 
 function RenderBlock({ layout }: RenderBlockProps): ReactElement | null {
 	switch (layout.blockType) {
-		case 'cta-block':
-			return <CallToActionBlock {...layout} />
 		case 'cards-block':
 			return <CardsBlock {...layout} />
 		case 'contact-form-block':

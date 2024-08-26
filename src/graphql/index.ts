@@ -1,16 +1,37 @@
-import { CONTACT, GLOBALS } from '@graphql/globals'
+import { CONTACT, GLOBALS, SETTINGS } from '@graphql/globals'
 import { PAGE, PAGES } from '@graphql/pages'
 import { PROJECT, PROJECTS } from '@graphql/projects'
-import { Contact, Header, Page, Project, Footer } from '@types'
+import { POST, POSTS } from '@graphql/posts'
+import { Contact, Header, Page, Project, Footer, Settings } from '@types'
+import type { Config } from '../../payload/payload-types'
 
 const next = {
 	revalidate: 600,
+}
+
+const queryMap = {
+	pages: {
+		single: PAGE,
+		multiple: PAGES,
+		key: 'Pages',
+	},
+	posts: {
+		single: POST,
+		multiple: POSTS,
+		key: 'Posts',
+	},
+	projects: {
+		single: PROJECT,
+		multiple: PROJECTS,
+		key: 'Projects',
+	},
 }
 
 export const fetchGlobals = async (): Promise<{
 	contact: Contact
 	footer: Footer
 	header: Header
+	settings: Settings
 }> => {
 	const { data, errors } = await fetch(
 		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?globals`,
@@ -35,6 +56,7 @@ export const fetchGlobals = async (): Promise<{
 		contact: data.Contact,
 		footer: data.Footer,
 		header: data.Header,
+		settings: data.Settings,
 	}
 }
 
@@ -64,6 +86,7 @@ export const fetchContact = async (): Promise<{
 		contact: data.Contact,
 	}
 }
+
 export const fetchPage = async (
 	incomingSlugSegments?: string[]
 ): Promise<Page | null> => {

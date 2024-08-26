@@ -21,18 +21,18 @@
     "@lexical/rich-text": "^0.17.0",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
-    "@next/bundle-analyzer": "^14.2.5",
-    "@next/third-parties": "^14.2.5",
+    "@next/bundle-analyzer": "^14.2.6",
+    "@next/third-parties": "^14.2.6",
     "@payloadcms/live-preview-react": "^0.2.0",
     "@payloadcms/plugin-form-builder": "^1.2.2",
     "@payloadcms/richtext-lexical": "^0.11.3",
     "@userback/react": "^0.3.4",
     "escape-html": "^1.0.3",
-    "framer-motion": "^11.3.28",
+    "framer-motion": "^11.3.29",
     "google-maps": "^4.3.3",
-    "next": "^14.2.5",
+    "next": "^14.2.6",
     "next-sitemap": "^4.2.3",
-    "npm-check-updates": "^17.0.6",
+    "npm-check-updates": "^17.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-facebook-pixel": "^1.0.4",
@@ -40,7 +40,7 @@
     "react-loading-skeleton": "^3.4.0",
     "react-player": "^2.16.0",
     "react-select": "^5.8.0",
-    "swiper": "^11.1.9",
+    "swiper": "^11.1.10",
     "usehooks-ts": "^3.1.0"
   },
   "devDependencies": {
@@ -48,14 +48,14 @@
     "@tailwindcss/forms": "^0.5.7",
     "@types/escape-html": "^1.0.4",
     "@types/grecaptcha": "^3.0.9",
-    "@types/node": "^22.4.1",
-    "@types/react": "^18.3.3",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.4",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "eslint": "^9.9.0",
-    "eslint-config-next": "14.2.5",
-    "husky": "^9.1.4",
+    "eslint-config-next": "14.2.6",
+    "husky": "^9.1.5",
     "lint-staged": "^15.2.9",
     "postcss": "^8.4.41",
     "prettier": "^3.3.3",
@@ -79,7 +79,6 @@
     ]
   },
   "volta": {
-    "node": "20.5.0",
-    "npm": "9.8.1"
+    "node": "20.17.0"
   }
 }

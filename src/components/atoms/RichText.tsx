@@ -9,8 +9,12 @@ interface RichTextProps {
 	submissionData?: { field: string; value: unknown }[]
 }
 
-function RichText({ content, submissionData, className }: RichTextProps): ReactElement | null {
-	const classes = clsx('rich-text space-y-4', className)
+function RichText({
+	content,
+	submissionData,
+	className,
+}: RichTextProps): ReactElement | null {
+	const classes = clsx('rich-text space-y-4 w-full', className)
 
 	return content ? (
 		<div className={classes}>
