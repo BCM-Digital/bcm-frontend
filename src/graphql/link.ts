@@ -18,3 +18,15 @@ export const LINK_FIELDS = ({ disableAppearance = false, disableLabel = false }:
     }
   }
 }`
+
+/**
+Might need to add these as well.
+...on Post {
+	slug
+
+}
+...on Project {
+        slug
+      }   
+	
+ */
