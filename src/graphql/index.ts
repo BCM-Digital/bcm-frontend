@@ -161,3 +161,53 @@ export const fetchPages = async (): Promise<
 
 	return data?.Pages?.docs
 }
+
+export const fetchProject = async (slug: string): Promise<Project | null> => {
+	const { data, errors } = await fetch(
+		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?project=${slug}`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			next,
+			body: JSON.stringify({
+				query: PROJECT,
+				variables: {
+					slug,
+				},
+			}),
+		}
+	).then((res) => res.json())
+
+	if (errors) {
+		console.error('Project Errors', JSON.stringify(errors))
+		throw new Error()
+	}
+
+	return data?.Projects?.docs[0] || null
+}
+
+// New function to fetch all projects
+export const fetchProjects = async (): Promise<Project[]> => {
+	const { data, errors } = await fetch(
+		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?projects`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			next,
+			body: JSON.stringify({
+				query: PROJECTS,
+			}),
+		}
+	).then((res) => res.json())
+
+	if (errors) {
+		console.error('Current Projects Errors', JSON.stringify(errors))
+		throw new Error()
+	}
+
+	return data?.Projects?.docs || []
+}

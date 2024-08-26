@@ -1,4 +1,3 @@
-import { META_FIELDS } from '@graphql/meta'
 import {
 	CARDS_BLOCK,
 	CONTACT_FORM_BLOCK,
@@ -9,6 +8,7 @@ import {
 } from '@graphql/blocks'
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
+import { META_FIELDS } from '@graphql/meta'
 
 export const PROJECTS = `
   query Projects {
@@ -27,10 +27,6 @@ export const PROJECT = `
 		id
 		title
 		thumbnail ${MEDIA_FIELDS}
-		categories {
-		  title
-		}
-		createdAt
 		pageHead {
 			type
 			subhead
@@ -53,9 +49,9 @@ export const PROJECT = `
 		  id
 		  slug
 		  title
-		  meta ${META_FIELDS}
+		  ${META_FIELDS}
 		}
-		meta ${META_FIELDS}
+		${META_FIELDS}
 	  }
 	}
   }
