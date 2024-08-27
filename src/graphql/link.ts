@@ -3,7 +3,10 @@ interface Args {
 	disableLabel?: boolean
 }
 
-export const LINK_FIELDS = ({ disableAppearance = false, disableLabel = false }: Args = {}): string => `{
+export const LINK_FIELDS = ({
+	disableAppearance = false,
+	disableLabel = false,
+}: Args = {}): string => `{
   ${!disableLabel ? 'label' : ''}
   ${!disableAppearance ? 'appearance' : ''}
   type
@@ -14,19 +17,13 @@ export const LINK_FIELDS = ({ disableAppearance = false, disableLabel = false }:
     value {
       ...on Page {
         slug
-      }        
+      }
+	  ...on Post {
+		  slug
+	  }
+	  ...on Project {
+		  slug
+		}     
     }
   }
 }`
-
-/**
-Might need to add these as well.
-...on Post {
-	slug
-
-}
-...on Project {
-        slug
-      }   
-	
- */

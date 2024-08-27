@@ -205,7 +205,7 @@ export const fetchProjects = async (): Promise<Project[]> => {
 	).then((res) => res.json())
 
 	if (errors) {
-		console.error('Current Projects Errors', JSON.stringify(errors))
+		console.error('Projects Errors', JSON.stringify(errors))
 		throw new Error()
 	}
 

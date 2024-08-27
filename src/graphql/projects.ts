@@ -49,9 +49,8 @@ export const PROJECT = `
 		  id
 		  slug
 		  title
-		  ${META_FIELDS}
 		}
-		${META_FIELDS}
+		
 	  }
 	}
   }

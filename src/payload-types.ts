@@ -145,6 +145,11 @@ export interface Page {
 	slug?: string | null
 	author?: (string | null) | User
 	featureImage?: string | Media | null
+	meta?: {
+		title?: string | null
+		description?: string | null
+		image?: string | Media | null
+	}
 	parent?: (string | null) | Page
 	breadcrumbs?:
 		| {
@@ -177,10 +182,19 @@ export interface PageHead {
 export interface Link {
 	type: 'reference' | 'custom'
 	newTab?: boolean | null
-	reference?: {
-		relationTo: 'pages'
-		value: string | Page
-	} | null
+	reference?:
+		| ({
+				relationTo: 'pages'
+				value: string | Page
+		  } | null)
+		| ({
+				relationTo: 'projects'
+				value: string | Project
+		  } | null)
+		| ({
+				relationTo: 'posts'
+				value: string | Post
+		  } | null)
 	url?: string | null
 	label: string
 	appearance?:
@@ -194,6 +208,37 @@ export interface Link {
 				| 'text'
 		  )
 		| null
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+	id: string
+	title: string
+	thumbnail?: string | Media | null
+	publishedAt?: string | null
+	pageHead?: PageHead
+	layout?:
+		| (
+				| CardsBlock
+				| ContactFormBlock
+				| ImageSliderBlock
+				| MediaAndContentBlock
+				| MediaBlock
+				| TabsBlock
+		  )[]
+		| null
+	slug?: string | null
+	relatedProjects?: (string | Project)[] | null
+	meta?: {
+		title?: string | null
+		description?: string | null
+		image?: string | Media | null
+	}
+	updatedAt: string
+	createdAt: string
+	_status?: ('draft' | 'published') | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -238,71 +283,6 @@ export interface Media {
 			filename?: string | null
 		}
 	}
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-	id: string
-	title?: string | null
-	updatedAt: string
-	createdAt: string
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-	id: string
-	title: string
-	categories?: (string | Category)[] | null
-	publishedAt?: string | null
-	authors?: (string | User)[] | null
-	populatedAuthor?:
-		| {
-				id?: string | null
-				name?: string | null
-		  }[]
-		| null
-	pageHead?: PageHead
-	layout: (
-		| CardsBlock
-		| ContactFormBlock
-		| ImageSliderBlock
-		| MediaAndContentBlock
-		| MediaBlock
-		| TabsBlock
-	)[]
-	relatedPosts?: (string | Post)[] | null
-	slug?: string | null
-	updatedAt: string
-	createdAt: string
-	_status?: ('draft' | 'published') | null
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-	id: string
-	firstName: string
-	lastName: string
-	fullName?: string | null
-	roles: ('admin' | 'public')[]
-	updatedAt: string
-	createdAt: string
-	enableAPIKey?: boolean | null
-	apiKey?: string | null
-	apiKeyIndex?: string | null
-	email: string
-	resetPasswordToken?: string | null
-	resetPasswordExpiration?: string | null
-	salt?: string | null
-	hash?: string | null
-	loginAttempts?: number | null
-	lockUntil?: string | null
-	password: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -713,29 +693,68 @@ export interface TabsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects".
+ * via the `definition` "posts".
  */
-export interface Project {
+export interface Post {
 	id: string
 	title: string
-	thumbnail?: string | Media | null
+	categories?: (string | Category)[] | null
 	publishedAt?: string | null
-	pageHead?: PageHead
-	layout?:
-		| (
-				| CardsBlock
-				| ContactFormBlock
-				| ImageSliderBlock
-				| MediaAndContentBlock
-				| MediaBlock
-				| TabsBlock
-		  )[]
+	authors?: (string | User)[] | null
+	populatedAuthor?:
+		| {
+				id?: string | null
+				name?: string | null
+		  }[]
 		| null
+	pageHead?: PageHead
+	layout: (
+		| CardsBlock
+		| ContactFormBlock
+		| ImageSliderBlock
+		| MediaAndContentBlock
+		| MediaBlock
+		| TabsBlock
+	)[]
+	relatedPosts?: (string | Post)[] | null
 	slug?: string | null
-	relatedProjects?: (string | Project)[] | null
 	updatedAt: string
 	createdAt: string
 	_status?: ('draft' | 'published') | null
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+	id: string
+	title?: string | null
+	updatedAt: string
+	createdAt: string
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+	id: string
+	firstName: string
+	lastName: string
+	fullName?: string | null
+	roles: ('admin' | 'public')[]
+	updatedAt: string
+	createdAt: string
+	enableAPIKey?: boolean | null
+	apiKey?: string | null
+	apiKeyIndex?: string | null
+	email: string
+	resetPasswordToken?: string | null
+	resetPasswordExpiration?: string | null
+	salt?: string | null
+	hash?: string | null
+	loginAttempts?: number | null
+	lockUntil?: string | null
+	password: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
