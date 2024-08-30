@@ -1,7 +1,6 @@
 import { ContactDetails, Menu, SocialMedia } from '@types'
 import { ReactElement } from 'react'
 import clsx from 'clsx'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import Widget from '@components/atoms/Widget'
 import FooterMenu from '@components/molecules/FooterMenu'
@@ -42,7 +41,7 @@ function SiteFooterTop({
 	const classes = clsx('site-footer__top')
 
 	return (
-		<Corridor className={classes}>
+		<div className={classes}>
 			<Grid>
 				<div className="order-1 col-span-full flex flex-col gap-4 tablet-landscape:col-span-10 tablet-landscape:gap-6 desktop:col-span-3">
 					<Logo className="text-dark" />
@@ -87,7 +86,7 @@ function SiteFooterTop({
 					<div className="order-3 col-span-full tablet-landscape:order-4 tablet-landscape:col-span-4 desktop:col-span-3"></div>
 				)}
 			</Grid>
-		</Corridor>
+		</div>
 	)
 }
 

@@ -11,6 +11,7 @@ import Providers from '@providers'
 import { fetchGlobals } from '@graphql'
 import { mergeOpenGraph } from '@utilities/mergeOpenGraph'
 
+import Corridor from '@components/atoms/Corridor'
 import SiteHeader from '@components/organisms/SiteHeader'
 import IconSprite from '@components/atoms/IconSprite'
 import SiteFooter from '@components/organisms/SiteFooter'
@@ -57,9 +58,11 @@ export default async function RootLayout({
 			<body className={classes}>
 				<Providers>
 					<IconSprite />
-					<SiteHeader header={header} contact={contact} />
-					{children}
-					<SiteFooter contact={contact} footer={footer} />
+					<Corridor>
+						<SiteHeader header={header} contact={contact} />
+						{children}
+						<SiteFooter contact={contact} footer={footer} />
+					</Corridor>
 				</Providers>
 			</body>
 		</html>

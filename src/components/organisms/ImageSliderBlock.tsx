@@ -3,7 +3,6 @@ import { ImageSliderBlock as ImageSliderBlockType } from '@types'
 import { ReactElement } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import HeadingAndContent from '@components/molecules/HeadingAndContent'
 import 'swiper/css'
@@ -24,7 +23,8 @@ function ImageSliderBlock({
 }: ImageSliderBlockProps): ReactElement | null {
 	if (!imageSliderBlockFields) return null
 
-	const { anchorId, title, breadcrumb, richText, links, slides } = imageSliderBlockFields
+	const { anchorId, title, breadcrumb, richText, links, slides } =
+		imageSliderBlockFields
 
 	const classes = clsx(blockType, className)
 
@@ -36,49 +36,43 @@ function ImageSliderBlock({
 			className={classes}
 			id={anchorId ?? ''}
 		>
-			<Corridor className="space-y-12">
-				<Grid>
-					<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
-						<HeadingAndContent
-							breadcrumb={breadcrumb}
-							title={title}
-							richText={richText}
-							headingLevel="h3"
-							links={links}
-						/>
-					</div>
-				</Grid>
-				{
-					slides && slides.length > 0 && (
-						<div>
-							<Swiper
-								className="w-full"
-								slidesPerView={1}
-								spaceBetween={30}
-								modules={[A11y, Autoplay, Navigation]}
-								effect="slide"
-								loop={true}
-								speed={500}
-								autoplay={{
-									delay: 3000,
-									pauseOnMouseEnter: true,
-									stopOnLastSlide: false,
-								}}
-							>
-								{
-									slides.map( ( image, index ) => {
-										return typeof image.media !== 'string' ? (
-											<SwiperSlide key={index}>
-												<Media resource={image.media}  />
-											</SwiperSlide>
-										) : null
-									})
-								}
-							</Swiper>
-						</div>
-					)
-				}
-			</Corridor>
+			<Grid>
+				<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
+					<HeadingAndContent
+						breadcrumb={breadcrumb}
+						title={title}
+						richText={richText}
+						headingLevel="h3"
+						links={links}
+					/>
+				</div>
+			</Grid>
+			{slides && slides.length > 0 && (
+				<div>
+					<Swiper
+						className="w-full"
+						slidesPerView={1}
+						spaceBetween={30}
+						modules={[A11y, Autoplay, Navigation]}
+						effect="slide"
+						loop={true}
+						speed={500}
+						autoplay={{
+							delay: 3000,
+							pauseOnMouseEnter: true,
+							stopOnLastSlide: false,
+						}}
+					>
+						{slides.map((image, index) => {
+							return typeof image.media !== 'string' ? (
+								<SwiperSlide key={index}>
+									<Media resource={image.media} />
+								</SwiperSlide>
+							) : null
+						})}
+					</Swiper>
+				</div>
+			)}
 		</motion.section>
 	)
 }

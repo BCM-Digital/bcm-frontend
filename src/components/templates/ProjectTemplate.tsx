@@ -1,10 +1,10 @@
 'use client'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useLivePreview } from '@payloadcms/live-preview-react'
 
 import { Project } from '@types'
 
-import PageHead from '@components/organisms/PageHead'
+import ProjectHead from '@components/organisms/ProjectHead'
 import Main from '@components/atoms/Main'
 import RenderBlocks from '@components/organisms/RenderBlocks'
 
@@ -20,17 +20,14 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project }) => {
 	})
 	const { layout, pageHead } = data
 	return (
-		<div>
-			<PageHead {...pageHead} />
-			<Main className="p-5">
-				{layout && (
-					<RenderBlocks
-						className="space-y-20 tablet-landscape:space-y-24 laptop:space-y-30"
-						layout={layout}
-					/>
-				)}
-			</Main>
-		</div>
+		<Fragment>
+			<div className="space-y-12">
+				<ProjectHead {...pageHead} />
+				<Main>
+					{layout && <RenderBlocks className="space-y-12" layout={layout} />}
+				</Main>
+			</div>
+		</Fragment>
 	)
 }
 

@@ -7,11 +7,7 @@ interface CorridorProps {
 }
 
 function Corridor({ children, className }: CorridorProps): ReactElement {
-	const classes = clsx(
-		'mx-auto w-full max-w-[calc(100vw-4rem)]',
-		'tablet:max-w-[calc(100vw-5rem)]',
-		className
-	)
+	const classes = clsx('mx-auto w-full px-5 max-w-screen-2xl', className)
 
 	return <div className={classes}>{children}</div>
 }

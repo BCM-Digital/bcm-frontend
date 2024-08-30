@@ -3,7 +3,6 @@ import { MediaBlock as MediaBlockType } from '@types'
 import { ReactElement } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import Media from '@components/atoms/Media'
 import Video from '@components/atoms/Video'
@@ -31,39 +30,37 @@ function MediaBlock({
 			className={classes}
 			id={anchorId ?? ''}
 		>
-			<Corridor>
-				<Grid>
-					{media.map((medium, index) => {
-						const { media, embeddedVideo, gridLayout } = medium
+			<Grid>
+				{media.map((medium, index) => {
+					const { media, embeddedVideo, gridLayout } = medium
 
-						const mediaClasses = clsx(
-							'col-span-full',
-							gridLayout === 'half'
-								? 'tablet:col-span-4 tablet-landscape:col-span-6'
-								: '',
-							gridLayout === 'fullscreen' ? '-mx-8' : ''
-						)
+					const mediaClasses = clsx(
+						'col-span-full',
+						gridLayout === 'half'
+							? 'tablet:col-span-4 tablet-landscape:col-span-6'
+							: '',
+						gridLayout === 'fullscreen' ? '-mx-8' : ''
+					)
 
-						return (
-							<div className={mediaClasses} key={index}>
-								{embeddedVideo && embeddedVideo.embed ? (
-									<Video
-										resource={embeddedVideo.video}
-										src={embeddedVideo.videoURL}
-										platform={embeddedVideo.platform}
-										videoClassName="aspect-video object-cover object-center w-full h-full"
-									/>
-								) : media && typeof media !== 'string' ? (
-									<Media
-										resource={media}
-										imgClassName="object-cover object-center w-full h-full"
-									/>
-								) : null}
-							</div>
-						)
-					})}
-				</Grid>
-			</Corridor>
+					return (
+						<div className={mediaClasses} key={index}>
+							{embeddedVideo && embeddedVideo.embed ? (
+								<Video
+									resource={embeddedVideo.video}
+									src={embeddedVideo.videoURL}
+									platform={embeddedVideo.platform}
+									videoClassName="aspect-video object-cover object-center w-full h-full"
+								/>
+							) : media && typeof media !== 'string' ? (
+								<Media
+									resource={media}
+									imgClassName="object-cover object-center w-full h-full"
+								/>
+							) : null}
+						</div>
+					)
+				})}
+			</Grid>
 		</motion.section>
 	)
 }

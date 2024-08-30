@@ -25,7 +25,7 @@ function Heading({
 		React.createElement(level, props, children)
 
 	const classes = clsx(
-		`font-heading uppercase text-${level} tablet:text-${level}-tablet laptop:text-${level}-desktop`,
+		`font-heading text-balance text-${level} tablet:text-${level}-tablet laptop:text-${level}-desktop`,
 		className
 	)
 

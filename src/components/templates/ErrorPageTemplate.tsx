@@ -1,5 +1,4 @@
 import React, { Fragment, ReactElement } from 'react'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import Paragraph from '@components/atoms/Paragraph'
 import TextLink from '@components/atoms/TextLink'
@@ -8,7 +7,7 @@ type ErrorPageTemplateProps = {}
 function ErrorPageTemplate({}: ErrorPageTemplateProps): ReactElement {
 	return (
 		<Fragment>
-			<Corridor className="scroll-margin-top pt-12 tablet:pt-16 laptop:pt-24 desktop:pt-32">
+			<div className="scroll-margin-top pt-12 tablet:pt-16 laptop:pt-24 desktop:pt-32">
 				<Grid>
 					<div className="col-span-full space-y-4 tablet:col-span-7">
 						<div className="laptop:space-y-2">
@@ -36,7 +35,7 @@ function ErrorPageTemplate({}: ErrorPageTemplateProps): ReactElement {
 						</p>
 					</div>
 				</Grid>
-			</Corridor>
+			</div>
 		</Fragment>
 	)
 }

@@ -5,7 +5,6 @@ import { Fragment, ReactElement, useCallback, useEffect, useState } from 'react'
 import { useScrollInfo } from '@faceless-ui/scroll-info'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
-import Corridor from '@components/atoms/Corridor'
 import Logo from '@components/atoms/Logo'
 import PrimaryNavigation from '@components/organisms/PrimaryNavigation'
 import MobileNavigation from '@components/organisms/MobileNavigation'
@@ -75,7 +74,7 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 					id="site-header"
 					className={classes}
 				>
-					<div className="flex w-full flex-row items-center justify-between px-5">
+					<div className="flex w-full flex-row items-center justify-between">
 						<Logo className="text-dark" />
 						<div className="flex flex-row items-center justify-end space-x-4 tablet-landscape:justify-start tablet-landscape:space-x-6 laptop:space-x-10">
 							<div className="flex items-center space-x-4">

@@ -1,6 +1,5 @@
 import React, { Fragment, ReactElement } from 'react'
 import clsx from 'clsx'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import Heading from '@components/atoms/Heading'
 import { PageHead } from '@types'
@@ -15,17 +14,16 @@ type HeroProps = PageHead & {
 
 function Hero({ title, content, media, links }: HeroProps): ReactElement {
 	const classes = clsx(
-		'hero scroll-margin-top @container relative text-white overflow-hidden aspect-video mx-5'
+		'hero scroll-margin-top @container relative text-white overflow-hidden'
 	)
 	const contentClasses = clsx(
-		'absolute z-20 inset-0 flex flex-col justify-end pt-28 pb-12 tablet-landscape:justify-center tablet-landscape:pb-14 tablet-landscape:pt-34 laptop:pb-16 laptop:pt-36'
+		'absolute z-20 inset-0 flex flex-col justify-end tablet-landscape:justify-center'
 	)
-	const imageClasses = clsx('relative z-0 overflow-hidden w-screen')
+	const imageClasses = clsx('relative z-0')
 	return (
 		<div className={classes} id="site-header">
 			{media && typeof media !== 'string' && (
 				<Fragment>
-					{/* <Overlay /> */}
 					<Media
 						className={imageClasses}
 						imgClassName="object-cover object-center size-full"
@@ -38,28 +36,26 @@ function Hero({ title, content, media, links }: HeroProps): ReactElement {
 				</Fragment>
 			)}
 			<div className={contentClasses}>
-				<Corridor className="relative z-10 flex flex-col">
-					<Grid>
-						{title && (
-							<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
-								<div className="space-y-4">
-									<header className="space-y-3 @tablet-landscape:space-y-4">
-										<Heading level="h1" title={title}>
-											{title}
-										</Heading>
-										{content && (
-											<Paragraph
-												paragraph={content}
-												className="text-body-md tablet:text-body-lg"
-											/>
-										)}
-									</header>
-									{links && links.length > 0 && <ButtonGroup links={links} />}
-								</div>
+				<Grid className="px-5 tablet:px-10">
+					{title && (
+						<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
+							<div className="space-y-4">
+								<header className="space-y-3 @tablet-landscape:space-y-4">
+									<Heading level="h1" title={title}>
+										{title}
+									</Heading>
+									{content && (
+										<Paragraph
+											paragraph={content}
+											className="text-body-md tablet:text-body-lg"
+										/>
+									)}
+								</header>
+								{links && links.length > 0 && <ButtonGroup links={links} />}
 							</div>
-						)}
-					</Grid>
-				</Corridor>
+						</div>
+					)}
+				</Grid>
 			</div>
 		</div>
 	)

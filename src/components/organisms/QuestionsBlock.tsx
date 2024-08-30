@@ -2,7 +2,6 @@ import { QuestionsBlock as QuestionsBlockType } from '@types'
 import { ReactElement } from 'react'
 import Section from '@components/atoms/Section'
 import clsx from 'clsx'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import HeadingAndContent from '@components/molecules/HeadingAndContent'
 import Accordion from '@components/molecules/Accordion'
@@ -25,39 +24,33 @@ function QuestionsBlock({
 
 	return (
 		<Section className={classes} htmlId={anchorId}>
-			<Corridor className="space-y-12">
-				<Grid>
-					<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
-						<HeadingAndContent
-							breadcrumb={breadcrumb}
-							title={title}
-							richText={richText}
-							headingLevel="h3"
-							links={links}
-						/>
+			<Grid>
+				<div className="col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:col-span-6">
+					<HeadingAndContent
+						breadcrumb={breadcrumb}
+						title={title}
+						richText={richText}
+						headingLevel="h3"
+						links={links}
+					/>
+				</div>
+				{faqs && faqs.length > 0 && (
+					<div className="col-span-full space-y-3 tablet:col-span-6 tablet-landscape:col-span-8 tablet-landscape:space-y-4 laptop:col-span-6">
+						{faqs.map((faq, index) => {
+							return typeof faq !== 'string' ? (
+								<Accordion
+									key={index}
+									title={faq.title}
+									htmlId={faq.id}
+									panelId={faq.id}
+								>
+									{faq.richText && <RichText content={faq.richText} />}
+								</Accordion>
+							) : null
+						})}
 					</div>
-					{
-						faqs && faqs.length > 0 && (
-							<div className="col-span-full space-y-3 tablet:col-span-6 tablet-landscape:space-y-4 tablet-landscape:col-span-8 laptop:col-span-6">
-								{
-									faqs.map( ( faq, index ) => {
-										return typeof faq !== 'string' ? (
-											<Accordion key={index} title={faq.title} htmlId={faq.id} panelId={faq.id}>
-												{
-													faq.richText && (
-														<RichText content={faq.richText}/>
-													)
-												}
-											</Accordion>
-										) : null
-									})
-								}
-							</div>
-						)
-					}
-
-				</Grid>
-			</Corridor>
+				)}
+			</Grid>
 		</Section>
 	)
 }

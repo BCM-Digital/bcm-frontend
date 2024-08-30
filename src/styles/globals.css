@@ -36,6 +36,12 @@ body::-webkit-scrollbar {
 	}
 }
 
+@layer components {
+	.project-hero {
+		@apply h-[calc(100vh_-_6.75rem)];
+	}
+}
+
 @layer utilities {
 	.scroll-margin-top {
 		scroll-margin-top: 5rem;

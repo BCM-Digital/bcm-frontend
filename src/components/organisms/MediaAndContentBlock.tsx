@@ -3,7 +3,6 @@ import { MediaAndContentBlock as MediaAndContentBlockType } from '@types'
 import { ReactElement } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import Corridor from '@components/atoms/Corridor'
 import Grid from '@components/atoms/Grid'
 import Media from '@components/atoms/Media'
 import RichText from '@components/atoms/RichText'
@@ -24,21 +23,10 @@ function MediaAndContentBlock({
 }: MediaAndContentBlockProps): ReactElement | null {
 	if (!mediaAndContentBlockFields) return null
 
-	const {
-		anchorId,
-		breadcrumb,
-		title,
-		media,
-		mediaPosition,
-		richText,
-		links,
-	} = mediaAndContentBlockFields
+	const { anchorId, breadcrumb, title, media, mediaPosition, richText, links } =
+		mediaAndContentBlockFields
 
-	const classes = clsx(
-		blockType,
-		className
-	)
-
+	const classes = clsx(blockType, className)
 
 	const contentClasses = clsx(
 		'col-span-full tablet:col-span-6 tablet-landscape:col-span-8 laptop:max-w-xl laptop:flex laptop:flex-col laptop:justify-center laptop:mx-auto laptop:col-span-6',
@@ -46,7 +34,9 @@ function MediaAndContentBlock({
 	)
 	const mediaClasses = clsx(
 		'col-span-full laptop:col-span-6',
-		mediaPosition === 'left' ? 'laptop:row-start-1 laptop:col-start-1' : 'laptop:col-start-7'
+		mediaPosition === 'left'
+			? 'laptop:row-start-1 laptop:col-start-1'
+			: 'laptop:col-start-7'
 	)
 
 	return (
@@ -57,32 +47,30 @@ function MediaAndContentBlock({
 			className={classes}
 			id={anchorId ?? ''}
 		>
-			<Corridor>
-				<Grid>
-					{(title || richText ) && (
-						<div className={contentClasses}>
-							<HeadingAndContent
-								breadcrumb={breadcrumb}
-								title={title}
-								richText={richText}
-								headingLevel="h3"
-								links={links}
-							/>
-						</div>
-					)}
-					<div className={mediaClasses}>
-						{media && typeof media !== 'string' && (
-							<Media
-								imgClassName="object-cover object-center w-full h-full"
-								videoClassName="aspect-video object-cover object-center w-full h-full"
-								resource={media}
-								background={true}
-								playing={true}
-							/>
-						)}
+			<Grid>
+				{(title || richText) && (
+					<div className={contentClasses}>
+						<HeadingAndContent
+							breadcrumb={breadcrumb}
+							title={title}
+							richText={richText}
+							headingLevel="h3"
+							links={links}
+						/>
 					</div>
-				</Grid>
-			</Corridor>
+				)}
+				<div className={mediaClasses}>
+					{media && typeof media !== 'string' && (
+						<Media
+							imgClassName="object-cover object-center w-full h-full"
+							videoClassName="aspect-video object-cover object-center w-full h-full"
+							resource={media}
+							background={true}
+							playing={true}
+						/>
+					)}
+				</div>
+			</Grid>
 		</motion.section>
 	)
 }

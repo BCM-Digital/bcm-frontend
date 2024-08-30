@@ -9,6 +9,7 @@ import Figure from '@components/atoms/Figure'
 
 type VideoProps = {
 	id?: string
+	className?: string
 	background?: boolean
 	platform?: ('youtube' | 'vimeo' | 'internal') | null
 	autoplay?: boolean
@@ -25,6 +26,7 @@ type VideoProps = {
 function Video({
 	id,
 	src,
+	className,
 	background = false,
 	autoplay = false,
 	platform = 'internal',
@@ -46,6 +48,7 @@ function Video({
 		}
 	}
 
+	const figureClasses = clsx('relative', className)
 	const videoClasses = clsx(
 		'video',
 		background ? 'video-object-fit' : '',
@@ -68,7 +71,7 @@ function Video({
 	}
 
 	return src && typeof src === 'string' ? (
-		<Figure className="relative">
+		<Figure className={figureClasses}>
 			<ReactPlayer
 				id={id}
 				className={videoClasses}

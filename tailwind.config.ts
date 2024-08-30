@@ -36,21 +36,18 @@ const config: Config = {
         '2.25rem',
         {
           lineHeight: '1.2',
-          letterSpacing: '0.02em',
           fontWeight: 800
         },
       ],
       'h1-tablet': [
         '3.5rem',
         {
-          lineHeight: '1.2',
           letterSpacing: '0.02em',
         },
       ],
       'h1-desktop': [
         '4rem',
         {
-          lineHeight: '1.2',
           letterSpacing: '0.02em',
         },
       ],
