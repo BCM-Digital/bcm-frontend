@@ -9,7 +9,6 @@ function useMobileMenuAnimation(isOpen: boolean) {
 	useEffect(() => {
 		animate(
 			'.mobile-menu',
-
 			isOpen
 				? {
 						clipPath: 'circle(100%)',
@@ -35,32 +34,16 @@ function useMobileMenuAnimation(isOpen: boolean) {
 			'.menu-items > li',
 			isOpen
 				? {
-						y: 0,
+						x: 0,
 						opacity: 1,
 					}
 				: {
-						y: 8,
+						x: '100%',
 						opacity: 0,
 					},
 			{
 				duration: 0.2,
 				delay: staggerMenuItems,
-			}
-		)
-		animate(
-			'.social-media > li',
-			isOpen
-				? {
-						x: 0,
-						opacity: 1,
-					}
-				: {
-						x: 16,
-						opacity: 0,
-					},
-			{
-				duration: 0.2,
-				delay: stagger(0.1, { startDelay: 0.35 }),
 			}
 		)
 	}, [isOpen, animate])

@@ -1,7 +1,7 @@
 import { CONTACT, GLOBALS, SETTINGS } from '@graphql/globals'
 import { PAGE, PAGES } from '@graphql/pages'
 import { PROJECT, PROJECTS } from '@graphql/projects'
-import { POST, POSTS } from '@graphql/posts'
+import { NEWS, NEWSARCHIVE } from '@graphql/news'
 import { Contact, Header, Page, Project, Footer, Settings } from '@types'
 import type { Config } from '../../payload/payload-types'
 
@@ -15,10 +15,10 @@ const queryMap = {
 		multiple: PAGES,
 		key: 'Pages',
 	},
-	posts: {
-		single: POST,
-		multiple: POSTS,
-		key: 'Posts',
+	news: {
+		single: NEWS,
+		multiple: NEWSARCHIVE,
+		key: 'News',
 	},
 	projects: {
 		single: PROJECT,
@@ -188,7 +188,6 @@ export const fetchProject = async (slug: string): Promise<Project | null> => {
 	return data?.Projects?.docs[0] || null
 }
 
-// New function to fetch all projects
 export const fetchProjects = async (): Promise<Project[]> => {
 	const { data, errors } = await fetch(
 		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?projects`,

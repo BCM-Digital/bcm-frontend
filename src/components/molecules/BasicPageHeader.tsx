@@ -15,7 +15,7 @@ function BasicPageHeader({
 	breadcrumb,
 }: BasicPageHeaderProps): ReactElement {
 	const classes = clsx(
-		'basic-header bg-gradient-to-b from-accent-100 via-accent-100 to-accent-50 scroll-margin-top pt-28 pb-12 tablet-landscape:pb-14 tablet-landscape:pt-34 laptop:pb-16 laptop:pt-36'
+		'basic-header bg-gradient-to-b from-accent-100 via-accent-100 to-accent-50 scroll-margin-top pt-16 pb-12 tablet-landscape:pb-14 tablet-landscape:pt-28 laptop:pb-16 laptop:pt-32'
 	)
 	return (
 		<div className={classes} id="site-header">
@@ -25,7 +25,7 @@ function BasicPageHeader({
 						<div className="space-y-4">
 							<header className="space-y-2">
 								{breadcrumb && <Breadcrumb breadcrumb={breadcrumb} />}
-								<Heading className="text-primary" level="h1" title={title}>
+								<Heading level="h1" title={title}>
 									{title}
 								</Heading>
 							</header>

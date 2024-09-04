@@ -1,26 +1,24 @@
 'use client'
-
-import { Page } from '@types'
-import React, { Fragment, ReactElement } from 'react'
+import React, { Fragment } from 'react'
 import { useLivePreview } from '@payloadcms/live-preview-react'
 
+import { News } from '@types'
+
+import PageHead from '@components/organisms/PageHead'
 import Main from '@components/atoms/Main'
 import RenderBlocks from '@components/organisms/RenderBlocks'
-import PageHead from '@components/organisms/PageHead'
 
-interface PageTemplateProps {
-	page: Page
+type NewsTemplateProps = {
+	article: News
 }
 
-function PageTemplate({ page }: PageTemplateProps): ReactElement {
+const NewsTemplate: React.FC<NewsTemplateProps> = ({ article }) => {
 	const { data } = useLivePreview({
 		serverURL: process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL || '',
 		depth: 1,
-		initialData: page,
+		initialData: article,
 	})
-
 	const { layout, pageHead } = data
-
 	return (
 		<Fragment>
 			<div className="space-y-12">
@@ -33,5 +31,4 @@ function PageTemplate({ page }: PageTemplateProps): ReactElement {
 	)
 }
 
-export default PageTemplate
-export type { PageTemplateProps }
+export default NewsTemplate

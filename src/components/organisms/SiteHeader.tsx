@@ -40,20 +40,6 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 	}, [route, setBurgerOpen])
 
 	useEffect(() => {
-		const { yDirection, y } = scrollInfo
-
-		if (y >= 82) {
-			if (yDirection === 'up') {
-				setShowHeader(true)
-			} else {
-				setShowHeader(false)
-			}
-		} else {
-			setShowHeader(true)
-		}
-	}, [scrollInfo, setShowHeader])
-
-	useEffect(() => {
 		if (burgerOpen) {
 			document.body.classList.add('h-screen', 'overflow-hidden')
 		} else {
@@ -63,7 +49,7 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 
 	//
 	const classes = clsx(
-		'site-header  flex flex-row items-center z-90 sticky top-0 bg-white py-5'
+		'site-header flex flex-row items-center z-90 sticky top-0 bg-white py-5'
 	)
 
 	return (
@@ -77,15 +63,17 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 					<div className="flex w-full flex-row items-center justify-between">
 						<Logo className="text-dark" />
 						<div className="flex flex-row items-center justify-end space-x-4 tablet-landscape:justify-start tablet-landscape:space-x-6 laptop:space-x-10">
-							<div className="flex items-center space-x-4">
-								{mainMenu &&
-									mainMenu.menuItem &&
-									mainMenu.menuItem.length > 0 && <MenuIcon />}
-							</div>
+							{mainMenu &&
+								mainMenu.menuItem &&
+								mainMenu.menuItem.length > 0 && (
+									<MenuIcon onToggle={toggleBurger} />
+								)}
 						</div>
 					</div>
 				</motion.header>
-				{mainMenu && mainMenu.menuItem && <MobileNavigation menu={mainMenu} />}
+				{mainMenu && mainMenu.menuItem && (
+					<MobileNavigation menu={mainMenu} open={burgerOpen} />
+				)}
 			</Fragment>
 		</AnimatePresence>
 	)

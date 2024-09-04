@@ -33,20 +33,20 @@ const config: Config = {
     },
     fontSize: {
       h1: [
-        '2.25rem',
+        'clamp(2.5rem, 8vw, 8rem)',
         {
           lineHeight: '1.2',
           fontWeight: 800
         },
       ],
       'h1-tablet': [
-        '3.5rem',
+        'clamp(3.5rem, 8vw, 10rem)',
         {
           letterSpacing: '0.02em',
         },
       ],
       'h1-desktop': [
-        '4rem',
+        'clamp(4rem, 8vw, 12rem)',
         {
           letterSpacing: '0.02em',
         },

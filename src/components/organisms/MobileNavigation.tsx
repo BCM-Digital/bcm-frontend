@@ -2,35 +2,31 @@
 
 import Nav from '@components/atoms/Nav'
 import { ReactElement } from 'react'
-import { MainMenu as MainMenuType, SocialMedia } from '@types'
+import { MainMenu as MainMenuType } from '@types'
 import clsx from 'clsx'
 import MainMenu from '@components/molecules/MainMenu'
-import SocialMediaGroup from '@components/molecules/SocialMediaGroup'
-import Corridor from '@components/atoms/Corridor'
 import useMobileMenuAnimation from '@hooks/useMobileMenuAnimation'
 
 type MobileNavigationProps = {
 	menu: MainMenuType
 	className?: string
-	socialMedia?: SocialMedia
 	open: boolean
 }
 
 function MobileNavigation({
 	menu,
-	socialMedia,
 	className,
 	open = false,
 }: MobileNavigationProps): ReactElement | null {
 	const classes = clsx(
-		'mobile-menu fixed inset-0 z-80 bg-white flex flex-col justify-end pb-17',
+		'mobile-menu fixed right-5 z-80 bg-white flex flex-col p-5',
 		className
 	)
 
-	
+	const scope = useMobileMenuAnimation(open)
 
 	return menu.menuItem && menu.menuItem.length ? (
-		<div>
+		<div ref={scope}>
 			{' '}
 			<div
 				className={classes}
@@ -41,16 +37,9 @@ function MobileNavigation({
 					opacity: 0,
 				}}
 			>
-				<Corridor className="space-y-16">
-					<Nav ariaLabel="primary-menu" id="primary-menu">
-						<MainMenu menu={menu} />
-					</Nav>
-					{socialMedia && (
-						<div className="tablet-landscape:hidden">
-							<SocialMediaGroup socialLinks={socialMedia.socialLinks} />
-						</div>
-					)}
-				</Corridor>
+				<Nav ariaLabel="primary-menu" id="primary-menu">
+					<MainMenu menu={menu} />
+				</Nav>
 			</div>
 		</div>
 	) : null

@@ -25,8 +25,6 @@ function ProjectGrid({
 
 	const classes = clsx(blockType, className, 'flex flex-col gap-5')
 
-	console.log(introText)
-
 	return (
 		<div className={classes}>
 			{introText && <RichText content={introText} />}

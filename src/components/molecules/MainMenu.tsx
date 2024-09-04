@@ -7,14 +7,13 @@ type MainMenuProps = {
 }
 
 function MainMenu({ menu }: MainMenuProps): ReactElement | null {
-	const classes = clsx(
-		'menu-items flex flex-col space-y-4 tablet-landscape:flex tablet-landscape:flex-row tablet-landscape:space-y-0 tablet-landscape:space-x-6 tablet-landscape:items-center laptop:space-x-10'
-	)
-
+	const classes = clsx('menu-items flex flex-col gap-5')
 
 	return menu.menuItem && menu.menuItem.length ? (
 		<ul role="menu" className={classes}>
-			{menu.menuItem.map((menuItem, index) => <MainMenuItem key={index} menuItem={menuItem} />)}
+			{menu.menuItem.map((menuItem, index) => (
+				<MainMenuItem key={index} menuItem={menuItem} />
+			))}
 		</ul>
 	) : null
 }

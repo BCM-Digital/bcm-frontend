@@ -70,7 +70,7 @@ export const CONTACT = `
 export const SETTINGS = `
 	query {
 		Settings {
-			postsPage {
+			newsPage {
 				slug
 			}
 			projectsPage {

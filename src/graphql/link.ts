@@ -18,7 +18,7 @@ export const LINK_FIELDS = ({
       ...on Page {
         slug
       }
-	  ...on Post {
+	  ...on News {
 		  slug
 	  }
 	  ...on Project {
