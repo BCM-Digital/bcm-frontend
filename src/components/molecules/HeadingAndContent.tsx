@@ -45,7 +45,6 @@ function HeadingAndContent({
 						{breadcrumb && <Breadcrumb breadcrumb={breadcrumb} />}
 						{title && (
 							<Heading
-								className="text-primary"
 								level={headingLevel}
 							>{title}</Heading>
 						)}

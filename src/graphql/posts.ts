@@ -1,4 +1,3 @@
-import { META_FIELDS } from '@graphql/meta'
 import {
 	CARDS_BLOCK,
 	CONTACT_FORM_BLOCK,
@@ -9,10 +8,11 @@ import {
 } from '@graphql/blocks'
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
+import { META_FIELDS } from '@graphql/meta'
 
-export const NEWSARCHIVE = `
-  query News {
-	News(limit: 300) {
+export const POSTS = `
+  query Posts {
+	Posts(limit: 300) {
 	  docs {
 		slug
 	  }
@@ -20,26 +20,24 @@ export const NEWSARCHIVE = `
   }
 `
 
-export const NEWS = `
-  query News($slug: String, $draft: Boolean) {
-	News(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
+export const POST = `
+  query Post($slug: String, $draft: Boolean) {
+	Posts(where: { slug: { equals: $slug }}, limit: 1, draft: $draft) {
 	  docs {
+		id
 		title
 		thumbnail ${MEDIA_FIELDS}
-		categories {
-		  title
-		}
-		createdAt
 		pageHead {
 			type
 			subhead
 			title
 			content
-			
+			links {
+				link ${LINK_FIELDS()}
+			}
 			media ${MEDIA_FIELDS}
 		}
 		layout {
-		  
 		  ${CARDS_BLOCK}
 		  ${CONTACT_FORM_BLOCK}
 		  ${IMAGE_SLIDER_BLOCK}
@@ -47,7 +45,8 @@ export const NEWS = `
 		  ${MEDIA_BLOCK}
 		  ${TABS_BLOCK}		
 		}
-		relatedNews {
+		relatedPosts {
+		  id
 		  slug
 		  title
 		}

@@ -1,12 +1,12 @@
 'use client'
+
+import { Project } from '@types'
 import React, { Fragment } from 'react'
 import { useLivePreview } from '@payloadcms/live-preview-react'
 
-import { Project } from '@types'
-
-import ProjectHead from '@components/organisms/ProjectHead'
 import Main from '@components/atoms/Main'
 import RenderBlocks from '@components/organisms/RenderBlocks'
+import ProjectHead from '@components/organisms/ProjectHead'
 
 type ProjectTemplateProps = {
 	project: Project
@@ -18,7 +18,9 @@ const ProjectTemplate: React.FC<ProjectTemplateProps> = ({ project }) => {
 		depth: 1,
 		initialData: project,
 	})
+	
 	const { layout, pageHead } = data
+	
 	return (
 		<Fragment>
 			<div className="space-y-12">

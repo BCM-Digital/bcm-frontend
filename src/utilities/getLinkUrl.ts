@@ -17,6 +17,10 @@ const getLinkUrl = (link: Link): string => {
 		if (link.reference.relationTo === 'projects') {
 			return `/project/${link.reference.value?.slug}`
 		}
+		
+		if (link.reference.relationTo === 'posts') {
+			return `/posts/${link.reference.value?.slug}`
+		}
 
 		if (link.reference.value?.slug === 'home') {
 			return '/'

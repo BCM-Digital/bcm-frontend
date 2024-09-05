@@ -19,7 +19,7 @@ export const ARCHIVE_BLOCK = `
 	selectedDocs {
 	  relationTo
 	  value {
-		...on News {
+		...on Posts {
 		  id
 		  slug
 		  title
@@ -34,7 +34,7 @@ export const ARCHIVE_BLOCK = `
 	populatedDocs {
 	  relationTo
 	  value {
-		...on News {
+		...on Posts {
 		  id
 		  slug
 		  title
@@ -200,5 +200,14 @@ export const TABS_BLOCK = `
 			media ${MEDIA_FIELDS} 			
 		}  
 	}
+}
+`
+
+export const TEXT_BLOCK = `
+...on TextBlock {
+	id
+	blockName
+	blockType
+	introText
 }
 `

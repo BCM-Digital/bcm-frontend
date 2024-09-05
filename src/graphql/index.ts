@@ -1,8 +1,8 @@
 import { CONTACT, GLOBALS, SETTINGS } from '@graphql/globals'
 import { PAGE, PAGES } from '@graphql/pages'
+import { POST, POSTS } from '@graphql/posts'
 import { PROJECT, PROJECTS } from '@graphql/projects'
-import { NEWS, NEWSARCHIVE } from '@graphql/news'
-import { Contact, Header, Page, Project, Footer, Settings } from '@types'
+import { Contact, Header, Page, Project, Footer } from '@types'
 import type { Config } from '../../payload/payload-types'
 
 const next = {
@@ -15,10 +15,10 @@ const queryMap = {
 		multiple: PAGES,
 		key: 'Pages',
 	},
-	news: {
-		single: NEWS,
-		multiple: NEWSARCHIVE,
-		key: 'News',
+	posts: {
+		single: POST,
+		multiple: POSTS,
+		key: 'Posts',
 	},
 	projects: {
 		single: PROJECT,
@@ -31,7 +31,6 @@ export const fetchGlobals = async (): Promise<{
 	contact: Contact
 	footer: Footer
 	header: Header
-	settings: Settings
 }> => {
 	const { data, errors } = await fetch(
 		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?globals`,
@@ -56,7 +55,6 @@ export const fetchGlobals = async (): Promise<{
 		contact: data.Contact,
 		footer: data.Footer,
 		header: data.Header,
-		settings: data.Settings,
 	}
 }
 
@@ -209,4 +207,53 @@ export const fetchProjects = async (): Promise<Project[]> => {
 	}
 
 	return data?.Projects?.docs || []
+}
+
+export const fetchPost = async (slug: string): Promise<Post | null> => {
+	const { data, errors } = await fetch(
+		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?post=${slug}`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			next,
+			body: JSON.stringify({
+				query: POST,
+				variables: {
+					slug,
+				},
+			}),
+		}
+	).then((res) => res.json())
+
+	if (errors) {
+		console.error('Post Errors', JSON.stringify(errors))
+		throw new Error()
+	}
+
+	return data?.Posts?.docs[0] || null
+}
+
+export const fetchPosts = async (): Promise<Post[]> => {
+	const { data, errors } = await fetch(
+		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?posts`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			next,
+			body: JSON.stringify({
+				query: POSTS,
+			}),
+		}
+	).then((res) => res.json())
+
+	if (errors) {
+		console.error('Posts Errors', JSON.stringify(errors))
+		throw new Error()
+	}
+
+	return data?.Posts?.docs || []
 }

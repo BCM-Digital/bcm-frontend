@@ -38,6 +38,7 @@ function ArchiveBlock({
 	return (
 		<div className={classes}>
 			{introContent && <RichText content={introContent} />}
+
 		</div>
 	)
 }

@@ -47,18 +47,18 @@ function MediaAndContentBlock({
 			className={classes}
 			id={anchorId ?? ''}
 		>
+			{(title || richText) && (
+				<div className={contentClasses}>
+					<HeadingAndContent
+						breadcrumb={breadcrumb}
+						title={title}
+						richText={richText}
+						headingLevel="h3"
+						links={links}
+					/>
+				</div>
+			)}
 			<Grid>
-				{(title || richText) && (
-					<div className={contentClasses}>
-						<HeadingAndContent
-							breadcrumb={breadcrumb}
-							title={title}
-							richText={richText}
-							headingLevel="h3"
-							links={links}
-						/>
-					</div>
-				)}
 				<div className={mediaClasses}>
 					{media && typeof media !== 'string' && (
 						<Media

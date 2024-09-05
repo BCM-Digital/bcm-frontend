@@ -18,6 +18,7 @@ export async function generateMetadata({
 
 const ProjectPage = async ({ params }: ProjectPageType) => {
 	const { slug } = params
+	
 	const project = await fetchProject(slug)
 
 	if (!project) return notFound()

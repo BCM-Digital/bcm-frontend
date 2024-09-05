@@ -66,16 +66,3 @@ export const CONTACT = `
     }        
   }
 `
-
-export const SETTINGS = `
-	query {
-		Settings {
-			newsPage {
-				slug
-			}
-			projectsPage {
-				slug
-			}
-		} 
-	}
-`
