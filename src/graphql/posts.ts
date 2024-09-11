@@ -26,6 +26,7 @@ export const POST = `
 	  docs {
 		id
 		title
+		slug
 		thumbnail ${MEDIA_FIELDS}
 		pageHead {
 			type
@@ -53,4 +54,45 @@ export const POST = `
 	  }
 	}
   }
+`
+
+export const BLOG = `
+ query Post( $limit: Int, $categories: [JSON] ) {
+ Posts(where: {  categories: { in: $categories  }}, limit: $limit,) {
+ 	docs {
+ 		id
+ 		title
+ 		slug
+		thumbnail ${MEDIA_FIELDS}
+ 		categories {
+ 			id
+ 			title
+ 		}
+ 	}
+ 	hasPrevPage
+ 	hasNextPage
+ 	prevPage
+ 	nextPage
+ }
+ }
+`
+
+export const NEXT_POST = `
+ query Post($date: DateTime, $slug: String ) {
+ Posts(where: { publishedOn: {greater_than_equal: $date}, slug: {not_equals: $slug} }, limit: 1, sort: "publishedOn" ) {
+ docs {
+ slug
+ }
+ }
+ }
+`
+
+export const PREVIOUS_POST = `
+ query Post($date: DateTime ) {
+ Posts(where: { publishedOn: {less_than: $date}}, limit: 1, sort: "publishedOn" ) {
+ docs {
+ slug
+ }
+ }
+ }
 `

@@ -12,9 +12,9 @@
  */
 export type LinkGroup =
   | {
-      link: Link;
-      id?: string | null;
-    }[]
+	  link: Link;
+	  id?: string | null;
+	}[]
   | null;
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -22,14 +22,14 @@ export type LinkGroup =
  */
 export type MenuItem =
   | {
-      type?: ('link' | 'submenu') | null;
-      label?: string | null;
-      link?: Link;
-      submenu?: {
-        submenuItem?: MenuLink[] | null;
-      };
-      id?: string | null;
-    }[]
+	  type?: ('link' | 'submenu') | null;
+	  label?: string | null;
+	  link?: Link;
+	  submenu?: {
+		submenuItem?: MenuLink[] | null;
+	  };
+	  id?: string | null;
+	}[]
   | null;
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -37,29 +37,29 @@ export type MenuItem =
  */
 export type BusinessHours =
   | {
-      dayOfWeek: string;
-      openingHours: string;
-      id?: string | null;
-    }[]
+	  dayOfWeek: string;
+	  openingHours: string;
+	  id?: string | null;
+	}[]
   | null;
 
 export interface Config {
   collections: {
-    pages: Page;
-    projects: Project;
-    posts: Post;
-    media: Media;
-    categories: Category;
-    users: User;
-    forms: Form;
-    'form-submissions': FormSubmission;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+	pages: Page;
+	projects: Project;
+	posts: Post;
+	media: Media;
+	categories: Category;
+	users: User;
+	forms: Form;
+	'form-submissions': FormSubmission;
+	'payload-preferences': PayloadPreference;
+	'payload-migrations': PayloadMigration;
   };
   globals: {
-    header: Header;
-    contact: Contact;
-    footer: Footer;
+	header: Header;
+	contact: Contact;
+	footer: Footer;
   };
 }
 /**
@@ -73,34 +73,34 @@ export interface Page {
   excerpt?: string | null;
   pageHead?: PageHead;
   layout?:
-    | (
-        | ArchiveBlock
-        | CardsBlock
-        | ContactFormBlock
-        | ImageSliderBlock
-        | MediaAndContentBlock
-        | MediaBlock
-        | ProjectGrid
-        | TabsBlock
-      )[]
-    | null;
+	| (
+		| ArchiveBlock
+		| CardsBlock
+		| ContactFormBlock
+		| ImageSliderBlock
+		| MediaAndContentBlock
+		| MediaBlock
+		| ProjectGrid
+		| TabsBlock
+	  )[]
+	| null;
   slug?: string | null;
   author?: (string | null) | User;
   featureImage?: string | Media | null;
   meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
+	title?: string | null;
+	description?: string | null;
+	image?: string | Media | null;
   };
   parent?: (string | null) | Page;
   breadcrumbs?:
-    | {
-        doc?: (string | null) | Page;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+	| {
+		doc?: (string | null) | Page;
+		url?: string | null;
+		label?: string | null;
+		id?: string | null;
+	  }[]
+	| null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -125,23 +125,23 @@ export interface Link {
   type: 'reference' | 'custom';
   newTab?: boolean | null;
   reference?:
-    | ({
-        relationTo: 'pages';
-        value: string | Page;
-      } | null)
-    | ({
-        relationTo: 'projects';
-        value: string | Project;
-      } | null)
-    | ({
-        relationTo: 'posts';
-        value: string | Post;
-      } | null);
+	| ({
+		relationTo: 'pages';
+		value: string | Page;
+	  } | null)
+	| ({
+		relationTo: 'projects';
+		value: string | Project;
+	  } | null)
+	| ({
+		relationTo: 'posts';
+		value: string | Post;
+	  } | null);
   url?: string | null;
   label: string;
   appearance?:
-    | ('primary' | 'primary-outline' | 'secondary' | 'secondary-outline' | 'white' | 'white-outline' | 'text')
-    | null;
+	| ('primary' | 'primary-outline' | 'secondary' | 'secondary-outline' | 'white' | 'white-outline' | 'text')
+	| null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -158,9 +158,9 @@ export interface Project {
   layout?: (CardsBlock | ContactFormBlock | ImageSliderBlock | MediaAndContentBlock | MediaBlock | TabsBlock)[] | null;
   relatedProjects?: (string | Project)[] | null;
   meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
+	title?: string | null;
+	description?: string | null;
+	image?: string | Media | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -184,30 +184,30 @@ export interface Media {
   focalX?: number | null;
   focalY?: number | null;
   sizes?: {
-    card?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    video?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    fullscreen?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
+	card?: {
+	  url?: string | null;
+	  width?: number | null;
+	  height?: number | null;
+	  mimeType?: string | null;
+	  filesize?: number | null;
+	  filename?: string | null;
+	};
+	video?: {
+	  url?: string | null;
+	  width?: number | null;
+	  height?: number | null;
+	  mimeType?: string | null;
+	  filesize?: number | null;
+	  filename?: string | null;
+	};
+	fullscreen?: {
+	  url?: string | null;
+	  width?: number | null;
+	  height?: number | null;
+	  mimeType?: string | null;
+	  filesize?: number | null;
+	  filename?: string | null;
+	};
   };
 }
 /**
@@ -226,33 +226,33 @@ export interface Category {
  */
 export interface CardsBlock {
   cardsBlockFields?: {
-    anchorId?: string | null;
-    breadcrumb?: string | null;
-    title?: string | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?: LinkGroup;
-    cards?:
-      | {
-          title: string;
-          shortDescription?: string | null;
-          links?: LinkGroup;
-          id?: string | null;
-        }[]
-      | null;
+	anchorId?: string | null;
+	breadcrumb?: string | null;
+	title?: string | null;
+	richText?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	links?: LinkGroup;
+	cards?:
+	  | {
+		  title: string;
+		  shortDescription?: string | null;
+		  links?: LinkGroup;
+		  id?: string | null;
+		}[]
+	  | null;
   };
   id?: string | null;
   blockName?: string | null;
@@ -264,26 +264,26 @@ export interface CardsBlock {
  */
 export interface ContactFormBlock {
   contactFormBlockFields?: {
-    anchorId?: string | null;
-    showContactInfo?: ('yes' | 'no') | null;
-    showGoogleMap?: ('yes' | 'no') | null;
-    showOpeningHours?: ('yes' | 'no') | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    payloadForm?: (string | null) | Form;
+	anchorId?: string | null;
+	showContactInfo?: ('yes' | 'no') | null;
+	showGoogleMap?: ('yes' | 'no') | null;
+	showOpeningHours?: ('yes' | 'no') | null;
+	richText?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	payloadForm?: (string | null) | Form;
   };
   id?: string | null;
   blockName?: string | null;
@@ -297,164 +297,164 @@ export interface Form {
   id: string;
   title: string;
   fields?:
-    | (
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            defaultValue?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'checkbox';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'country';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'email';
-          }
-        | {
-            message?: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'message';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'number';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            options?:
-              | {
-                  label: string;
-                  value: string;
-                  id?: string | null;
-                }[]
-              | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'select';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'state';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'text';
-          }
-        | {
-            name: string;
-            label?: string | null;
-            width?: number | null;
-            defaultValue?: string | null;
-            required?: boolean | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'textarea';
-          }
-      )[]
-    | null;
+	| (
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			required?: boolean | null;
+			defaultValue?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'checkbox';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'country';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'email';
+		  }
+		| {
+			message?: {
+			  root: {
+				type: string;
+				children: {
+				  type: string;
+				  version: number;
+				  [k: string]: unknown;
+				}[];
+				direction: ('ltr' | 'rtl') | null;
+				format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+				indent: number;
+				version: number;
+			  };
+			  [k: string]: unknown;
+			} | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'message';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			defaultValue?: number | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'number';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			defaultValue?: string | null;
+			options?:
+			  | {
+				  label: string;
+				  value: string;
+				  id?: string | null;
+				}[]
+			  | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'select';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'state';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			defaultValue?: string | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'text';
+		  }
+		| {
+			name: string;
+			label?: string | null;
+			width?: number | null;
+			defaultValue?: string | null;
+			required?: boolean | null;
+			id?: string | null;
+			blockName?: string | null;
+			blockType: 'textarea';
+		  }
+	  )[]
+	| null;
   submitButtonLabel?: string | null;
   confirmationType?: ('message' | 'redirect') | null;
   confirmationMessage?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
+	root: {
+	  type: string;
+	  children: {
+		type: string;
+		version: number;
+		[k: string]: unknown;
+	  }[];
+	  direction: ('ltr' | 'rtl') | null;
+	  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+	  indent: number;
+	  version: number;
+	};
+	[k: string]: unknown;
   } | null;
   redirect?: {
-    type?: ('reference' | 'custom') | null;
-    reference?: {
-      relationTo: 'pages';
-      value: string | Page;
-    } | null;
-    url?: string | null;
+	type?: ('reference' | 'custom') | null;
+	reference?: {
+	  relationTo: 'pages';
+	  value: string | Page;
+	} | null;
+	url?: string | null;
   };
   emails?:
-    | {
-        emailTo?: string | null;
-        cc?: string | null;
-        bcc?: string | null;
-        replyTo?: string | null;
-        emailFrom?: string | null;
-        subject: string;
-        message?: {
-          root: {
-            type: string;
-            children: {
-              type: string;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
+	| {
+		emailTo?: string | null;
+		cc?: string | null;
+		bcc?: string | null;
+		replyTo?: string | null;
+		emailFrom?: string | null;
+		subject: string;
+		message?: {
+		  root: {
+			type: string;
+			children: {
+			  type: string;
+			  version: number;
+			  [k: string]: unknown;
+			}[];
+			direction: ('ltr' | 'rtl') | null;
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+			indent: number;
+			version: number;
+		  };
+		  [k: string]: unknown;
+		} | null;
+		id?: string | null;
+	  }[]
+	| null;
   updatedAt: string;
   createdAt: string;
 }
@@ -464,29 +464,29 @@ export interface Form {
  */
 export interface ImageSliderBlock {
   imageSliderBlockFields: {
-    anchorId?: string | null;
-    breadcrumb?: string | null;
-    title?: string | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?: LinkGroup;
-    slides: {
-      media: string | Media;
-      id?: string | null;
-    }[];
+	anchorId?: string | null;
+	breadcrumb?: string | null;
+	title?: string | null;
+	richText?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	links?: LinkGroup;
+	slides: {
+	  media: string | Media;
+	  id?: string | null;
+	}[];
   };
   id?: string | null;
   blockName?: string | null;
@@ -498,27 +498,27 @@ export interface ImageSliderBlock {
  */
 export interface MediaAndContentBlock {
   mediaAndContentBlockFields?: {
-    anchorId?: string | null;
-    breadcrumb?: string | null;
-    title?: string | null;
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?: LinkGroup;
-    media?: string | Media | null;
-    mediaPosition?: ('left' | 'right') | null;
+	anchorId?: string | null;
+	breadcrumb?: string | null;
+	title?: string | null;
+	richText?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	links?: LinkGroup;
+	media?: string | Media | null;
+	mediaPosition?: ('left' | 'right') | null;
   };
   id?: string | null;
   blockName?: string | null;
@@ -530,13 +530,13 @@ export interface MediaAndContentBlock {
  */
 export interface MediaBlock {
   mediaBlockFields: {
-    anchorId?: string | null;
-    media: {
-      media?: string | Media | null;
-      embeddedVideo?: EmbeddedVideo;
-      gridLayout: 'fullwidth' | 'fullscreen' | 'half' | 'third';
-      id?: string | null;
-    }[];
+	anchorId?: string | null;
+	media: {
+	  media?: string | Media | null;
+	  embeddedVideo?: EmbeddedVideo;
+	  gridLayout: 'fullwidth' | 'fullscreen' | 'half' | 'third';
+	  id?: string | null;
+	}[];
   };
   id?: string | null;
   blockName?: string | null;
@@ -559,48 +559,48 @@ export interface EmbeddedVideo {
  */
 export interface TabsBlock {
   tabsBlockFields: {
-    anchorId?: string | null;
-    tabs: {
-      label: string;
-      richText?: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      } | null;
-      accordions?:
-        | {
-            title: string;
-            richText?: {
-              root: {
-                type: string;
-                children: {
-                  type: string;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-          }[]
-        | null;
-      media?: string | Media | null;
-      id?: string | null;
-    }[];
+	anchorId?: string | null;
+	tabs: {
+	  label: string;
+	  richText?: {
+		root: {
+		  type: string;
+		  children: {
+			type: string;
+			version: number;
+			[k: string]: unknown;
+		  }[];
+		  direction: ('ltr' | 'rtl') | null;
+		  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		  indent: number;
+		  version: number;
+		};
+		[k: string]: unknown;
+	  } | null;
+	  accordions?:
+		| {
+			title: string;
+			richText?: {
+			  root: {
+				type: string;
+				children: {
+				  type: string;
+				  version: number;
+				  [k: string]: unknown;
+				}[];
+				direction: ('ltr' | 'rtl') | null;
+				format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+				indent: number;
+				version: number;
+			  };
+			  [k: string]: unknown;
+			} | null;
+			id?: string | null;
+		  }[]
+		| null;
+	  media?: string | Media | null;
+	  id?: string | null;
+	}[];
   };
   id?: string | null;
   blockName?: string | null;
@@ -621,9 +621,9 @@ export interface Post {
   layout?: (CardsBlock | ContactFormBlock | ImageSliderBlock | MediaAndContentBlock | MediaBlock | TabsBlock)[] | null;
   relatedPosts?: (string | Post)[] | null;
   meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
+	title?: string | null;
+	description?: string | null;
+	image?: string | Media | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -635,50 +635,23 @@ export interface Post {
  */
 export interface ArchiveBlock {
   archiveBlockFields?: {
-    introContent?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    populateBy?: ('collection' | 'selection') | null;
-    relationTo?: ('posts' | 'projects') | null;
-    categories?: (string | Category)[] | null;
-    limit?: number | null;
-    selectedDocs?:
-      | (
-          | {
-              relationTo: 'posts';
-              value: string | Post;
-            }
-          | {
-              relationTo: 'projects';
-              value: string | Project;
-            }
-        )[]
-      | null;
-    populatedDocs?:
-      | (
-          | {
-              relationTo: 'posts';
-              value: string | Post;
-            }
-          | {
-              relationTo: 'projects';
-              value: string | Project;
-            }
-        )[]
-      | null;
-    populatedDocsTotal?: number | null;
+	introContent?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	relationTo?: ('posts' | 'projects') | null;
+	categories?: (string | Category)[] | null;
   };
   id?: string | null;
   blockName?: string | null;
@@ -690,46 +663,47 @@ export interface ArchiveBlock {
  */
 export interface ProjectGrid {
   projectGridFields: {
-    introText?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    tiles: {
-      type?: ('project' | 'newsArticle' | 'image' | 'text') | null;
-      width?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-      height?: boolean | null;
-      project?: (string | null) | Project;
-      post?: (string | null) | Post;
-      image?: string | Media | null;
-      tileText?: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      } | null;
-      invertBackground?: boolean | null;
-      id?: string | null;
-    }[];
+	introText?: {
+	  root: {
+		type: string;
+		children: {
+		  type: string;
+		  version: number;
+		  [k: string]: unknown;
+		}[];
+		direction: ('ltr' | 'rtl') | null;
+		format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		indent: number;
+		version: number;
+	  };
+	  [k: string]: unknown;
+	} | null;
+	tiles: {
+	  type?: ('project' | 'newsArticle' | 'image' | 'text') | null;
+	  width?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+	  height?: boolean | null;
+	  project?: (string | null) | Project;
+	  post?: (string | null) | Post;
+	  image?: string | Media | null;
+	  tileText?: {
+		root: {
+		  type: string;
+		  children: {
+			type: string;
+			version: number;
+			[k: string]: unknown;
+		  }[];
+		  direction: ('ltr' | 'rtl') | null;
+		  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+		  indent: number;
+		  version: number;
+		};
+		[k: string]: unknown;
+	  } | null;
+	  link?: Link;
+	  invertBackground?: boolean | null;
+	  id?: string | null;
+	}[];
   };
   id?: string | null;
   blockName?: string | null;
@@ -767,12 +741,12 @@ export interface FormSubmission {
   id: string;
   form: string | Form;
   submissionData?:
-    | {
-        field: string;
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
+	| {
+		field: string;
+		value: string;
+		id?: string | null;
+	  }[]
+	| null;
   updatedAt: string;
   createdAt: string;
 }
@@ -783,19 +757,19 @@ export interface FormSubmission {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
-    value: string | User;
+	relationTo: 'users';
+	value: string | User;
   };
   key?: string | null;
   value?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
+	| {
+		[k: string]: unknown;
+	  }
+	| unknown[]
+	| string
+	| number
+	| boolean
+	| null;
   updatedAt: string;
   createdAt: string;
 }
@@ -858,19 +832,19 @@ export interface ContactDetails {
   primaryEmail?: string | null;
   contactPhone?: string | null;
   location?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
+	root: {
+	  type: string;
+	  children: {
+		type: string;
+		version: number;
+		[k: string]: unknown;
+	  }[];
+	  direction: ('ltr' | 'rtl') | null;
+	  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+	  indent: number;
+	  version: number;
+	};
+	[k: string]: unknown;
   } | null;
   lat?: string | null;
   lng?: string | null;
@@ -882,12 +856,12 @@ export interface ContactDetails {
  */
 export interface SocialMedia {
   socialLinks?:
-    | {
-        label: string;
-        url: string;
-        id?: string | null;
-      }[]
-    | null;
+	| {
+		label: string;
+		url: string;
+		id?: string | null;
+	  }[]
+	| null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -896,19 +870,19 @@ export interface SocialMedia {
 export interface Footer {
   id: string;
   footerRichText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
+	root: {
+	  type: string;
+	  children: {
+		type: string;
+		version: number;
+		[k: string]: unknown;
+	  }[];
+	  direction: ('ltr' | 'rtl') | null;
+	  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+	  indent: number;
+	  version: number;
+	};
+	[k: string]: unknown;
   } | null;
   footerMenu?: Menu;
   legalsMenu?: Menu;

@@ -1,16 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface MenuIconProps {
-	onToggle: (isOpen: boolean) => void
+	onToggle: () => void
+	open: boolean
 }
 
-const MenuIcon: React.FC<MenuIconProps> = ({ onToggle }) => {
-	const [isX, setIsX] = useState(false)
+const MenuIcon: React.FC<MenuIconProps> = ({ onToggle, open }) => {
+	const [isX, setIsX] = useState(open)
+
+	useEffect(() => {
+		setIsX(open)
+	}, [open])
 
 	const handleClick = () => {
-		const isOpen = !isX
-		setIsX(isOpen)
-		onToggle(isOpen)
+		onToggle()
 	}
 
 	return (

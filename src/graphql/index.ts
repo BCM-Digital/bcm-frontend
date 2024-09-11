@@ -1,9 +1,8 @@
-import { CONTACT, GLOBALS, SETTINGS } from '@graphql/globals'
+import { CONTACT, GLOBALS } from '@graphql/globals'
 import { PAGE, PAGES } from '@graphql/pages'
-import { POST, POSTS } from '@graphql/posts'
+import { POST, POSTS, BLOG } from '@graphql/posts'
 import { PROJECT, PROJECTS } from '@graphql/projects'
 import { Contact, Header, Page, Project, Footer } from '@types'
-import type { Config } from '../../payload/payload-types'
 
 const next = {
 	revalidate: 600,
@@ -256,4 +255,42 @@ export const fetchPosts = async (): Promise<Post[]> => {
 	}
 
 	return data?.Posts?.docs || []
+}
+
+export const fetchBlog = async (
+	limit: number,
+	categories: String[]
+): Promise<{
+	hasNextPage: boolean
+	hasPrevPage: boolean
+	nextPage: number
+	prevPage: number
+	docs: Post[]
+}> => {
+	const { data, errors } = await fetch(
+		`${process.env.NEXT_PUBLIC_PAYLOAD_SERVER_URL}/api/graphql?post`,
+		{
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			next,
+			body: JSON.stringify({
+				query: BLOG,
+				variables: {
+					limit,
+					categories,
+				},
+			}),
+		}
+	).then((res) => res.json())
+
+	if (errors) {
+		console.error('Blog Errors', JSON.stringify(errors))
+		throw new Error()
+	}
+
+	return {
+		...data?.Posts,
+	}
 }

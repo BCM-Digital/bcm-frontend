@@ -26,10 +26,10 @@ function FooterMenu({ menu, className }: FooterMenuProps): ReactElement {
 	)
 	return (
 		<Nav className={classes}>
-			<ul role="menu">
+			<ul role="menu" className='space-y-4'>
 				{menu.menuItem?.map((item, index) => {
 					return (
-						<li role="presentation" className="space-y-6" key={index}>
+						<li role="presentation" className="space-y-4" key={index}>
 							<MenuLink
 								{...item.link}
 								className={

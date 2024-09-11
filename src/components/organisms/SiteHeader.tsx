@@ -2,15 +2,11 @@
 import { Contact, Header } from '@types'
 import clsx from 'clsx'
 import { Fragment, ReactElement, useCallback, useEffect, useState } from 'react'
-import { useScrollInfo } from '@faceless-ui/scroll-info'
 import { usePathname } from 'next/navigation'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import Logo from '@components/atoms/Logo'
-import PrimaryNavigation from '@components/organisms/PrimaryNavigation'
 import MobileNavigation from '@components/organisms/MobileNavigation'
-import Hamburger from '@components/atoms/Hamburger'
 import MenuIcon from '@components/atoms/MenuIcon'
-import ButtonGroup from '@components/atoms/ButtonGroup'
 
 type SiteHeaderProps = {
 	header: Header
@@ -18,11 +14,8 @@ type SiteHeaderProps = {
 }
 
 function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
-	const scrollInfo = useScrollInfo()
 	const route = usePathname()
-	const [showHeader, setShowHeader] = useState<boolean>(true)
 	const { mainMenu } = header
-	const { socialMedia, contactDetails } = contact
 	/**
 	 * Handle toggling mobile navigation
 	 */
@@ -55,22 +48,18 @@ function SiteHeader({ header, contact }: SiteHeaderProps): ReactElement {
 	return (
 		<AnimatePresence>
 			<Fragment>
-				<motion.header
-					animate={burgerOpen ? 'open' : 'closed'}
-					id="site-header"
-					className={classes}
-				>
+				<header id="site-header" className={classes}>
 					<div className="flex w-full flex-row items-center justify-between">
 						<Logo className="text-dark" />
 						<div className="flex flex-row items-center justify-end space-x-4 tablet-landscape:justify-start tablet-landscape:space-x-6 laptop:space-x-10">
 							{mainMenu &&
 								mainMenu.menuItem &&
 								mainMenu.menuItem.length > 0 && (
-									<MenuIcon onToggle={toggleBurger} />
+									<MenuIcon onToggle={toggleBurger} open={burgerOpen} />
 								)}
 						</div>
 					</div>
-				</motion.header>
+				</header>
 				{mainMenu && mainMenu.menuItem && (
 					<MobileNavigation menu={mainMenu} open={burgerOpen} />
 				)}

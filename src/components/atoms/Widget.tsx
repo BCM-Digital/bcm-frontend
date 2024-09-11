@@ -10,7 +10,7 @@ interface WidgetProps {
 }
 
 function Widget({ title, children, className }: WidgetProps): ReactElement {
-	const classes = classNames('space-y-6', className)
+	const classes = classNames('space-y-4', className)
 
 	return (
 		<div className={classes}>

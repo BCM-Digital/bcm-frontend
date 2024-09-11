@@ -21,7 +21,7 @@ function SiteFooterBottom({
 		<div className={classes}>
 			{contactDetails &&
 				(contactDetails.businessABN || contactDetails.businessName) && (
-					<div className="order-2 flex flex-row items-center space-x-4 tablet:order-1">
+					<div className="order-2 flex flex-row items-start space-x-4 tablet:order-1">
 						{contactDetails.businessName && (
 							<p>
 								© {year} {contactDetails.businessName}
@@ -33,6 +33,14 @@ function SiteFooterBottom({
 						{contactDetails.businessABN && (
 							<p>ABN: {contactDetails.businessABN}</p>
 						)}
+						<p className="max-w-2xl leading-tight">
+							<small>
+								BCM Group acknowledges the Traditional Custodians of the land on
+								which we work and live, and recognise their continuing
+								connection to land, water and community. We also pay our
+								respects to Elders past, present and emerging.
+							</small>
+						</p>
 					</div>
 				)}
 			{footerMenu && (

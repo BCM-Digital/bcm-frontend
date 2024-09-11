@@ -29,7 +29,7 @@ function ProjectGrid({
 		<div className={classes}>
 			{introText && <RichText content={introText} />}
 
-			<Grid>
+			<Grid className="grid-flow-row-dense">
 				{tiles &&
 					tiles.map((medium, index) => {
 						const {
@@ -37,6 +37,7 @@ function ProjectGrid({
 							width,
 							height,
 							project,
+							post,
 							image,
 							tileText,
 							invertBackground,
@@ -60,27 +61,31 @@ function ProjectGrid({
 								? `/projects/${project.slug}`
 								: undefined
 
+						const postHref =
+							type === 'newsArticle' && post?.slug
+								? `/posts/${post.slug}`
+								: undefined
+
 						return (
 							<div key={index} className={tileClasses}>
 								{type && type === 'project' ? (
-									<div className="group/tile grid h-full grid-cols-4 grid-rows-3 justify-end overflow-hidden bg-dark">
-										<Media
-											resource={project.thumbnail}
-											className="col-span-full col-start-1 row-span-full row-start-1"
-											imgClassName="object-cover object-center w-full h-full opacity-90"
-										/>
-										<div className="relative z-10 col-span-2 col-start-1 row-start-3 translate-y-full self-end bg-gradient-to-tr from-black/70 to-transparent p-5 transition duration-500 group-hover/tile:translate-y-0">
-											<Heading
-												level="h3"
-												className="drop-drop-shadow-2xl font-bold text-white"
-											>
+									<div className="group/tile flow grid h-full grid-cols-4 grid-rows-3 justify-end overflow-hidden bg-dark">
+										{project.thumbnail && (
+											<Media
+												resource={project.thumbnail}
+												className="col-span-full col-start-1 row-span-full row-start-1"
+												imgClassName="object-cover object-center w-full h-full opacity-90"
+											/>
+										)}
+										<div className="relative z-10 col-span-full col-start-1 row-start-1 -translate-y-full self-start p-5 transition duration-500 group-hover/tile:translate-y-0">
+											<h3 className="inline-flex rounded-lg bg-white px-4 py-2">
 												{project.title}
-											</Heading>
+											</h3>
 										</div>
 										{href && (
-											<div className="group/link z-20 col-span-2 col-start-3 row-start-3 translate-y-full self-end justify-self-end p-5 transition duration-[350ms] group-hover/tile:translate-y-0">
+											<div className="z-20 col-span-2 col-start-3 row-start-3 translate-y-full self-end justify-self-end p-5 transition duration-[350ms] group-hover/tile:translate-y-0">
 												<Link
-													className="text-lg inline-flex items-center gap-2 rounded-lg bg-primary px-2.5 py-2 font-bold capitalize text-black transition duration-500 hover:bg-white"
+													className="group/link text-lg inline-flex items-center gap-2 rounded-lg bg-primary px-2.5 py-2 font-bold capitalize text-black transition duration-500 hover:bg-white"
 													href={href}
 													target="_self"
 													role="link"
@@ -100,6 +105,34 @@ function ProjectGrid({
 								) : type && type === 'text' ? (
 									<div className={textTileClasses}>
 										<RichText className="p-5 px-20" content={tileText} />
+									</div>
+								) : type && type === 'newsArticle' ? (
+									<div className="group/post flow grid h-full grid-cols-4 grid-rows-3 justify-end overflow-hidden bg-light">
+										{post.thumbnail && (
+											<Media
+												resource={post.thumbnail}
+												className="col-span-full col-start-1 row-span-full row-start-1"
+												imgClassName="object-cover object-center w-full h-full opacity-90"
+											/>
+										)}
+										<div className="relative z-10 col-span-full col-start-1 row-start-1 -translate-y-full self-start p-5 transition duration-500 group-hover/post:translate-y-0">
+											<h3 className="inline-flex rounded-lg bg-white px-4 py-2">
+												{post.title}
+											</h3>
+										</div>
+										{postHref && (
+											<div className="z-20 col-span-2 col-start-3 row-start-3 translate-y-full self-end justify-self-end p-5 transition duration-[350ms] group-hover/post:translate-y-0">
+												<Link
+													className="group/link text-lg inline-flex items-center gap-2 rounded-lg bg-primary px-2.5 py-2 font-bold capitalize text-black transition duration-500 hover:bg-white"
+													href={postHref}
+													target="_self"
+													role="link"
+												>
+													Full story
+													<ArrowUpRightIcon className="size-5 transition duration-500 group-hover/link:text-primary" />
+												</Link>
+											</div>
+										)}
 									</div>
 								) : null}
 							</div>

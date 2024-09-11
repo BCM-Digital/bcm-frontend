@@ -5,50 +5,15 @@ import { EMBEDDED_VIDEO_FIELDS, MEDIA_FIELDS } from '@graphql/media'
 import { META_FIELDS } from '@graphql/meta'
 
 export const ARCHIVE_BLOCK = `
-...on Archive {
+...on ArchiveBlock {
   id
   blockName
   blockType
   archiveBlockFields
   {
 	introContent
-	populateBy
 	relationTo
-	${CATEGORIES}
-	limit
-	selectedDocs {
-	  relationTo
-	  value {
-		...on Posts {
-		  id
-		  slug
-		  title
-		}
-		...on Project {
-		  id
-		  slug
-		  title
-		}
-	  }
-	}
-	populatedDocs {
-	  relationTo
-	  value {
-		...on Posts {
-		  id
-		  slug
-		  title
-		  ${CATEGORIES}
-		}
-		...on Project {
-		  id
-		  slug
-		  title
-		  ${CATEGORIES}
-		}
-	  }
-	}
-	populatedDocsTotal
+	categories {title}
   }
 }
 `
@@ -172,6 +137,19 @@ export const PROJECT_GRID = `
 					links {
 						link ${LINK_FIELDS()}
 					}
+					media ${MEDIA_FIELDS}
+				}
+			}
+			post {
+				id
+				slug
+				title
+				thumbnail ${MEDIA_FIELDS}
+				pageHead {
+					type
+					subhead
+					title
+					content
 					media ${MEDIA_FIELDS}
 				}
 			}

@@ -43,6 +43,7 @@ export const PAGE = `
         	media ${MEDIA_FIELDS}
         }
         layout {
+        	${ARCHIVE_BLOCK}
         	${CARDS_BLOCK}
         	${CONTACT_FORM_BLOCK}
         	${IMAGE_SLIDER_BLOCK}
