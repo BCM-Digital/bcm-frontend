@@ -26,6 +26,7 @@ export const PROJECT = `
 	  docs {
 		id
 		title
+		slug
 		thumbnail ${MEDIA_FIELDS}
 		pageHead {
 			type

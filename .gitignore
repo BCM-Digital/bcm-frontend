@@ -45,3 +45,5 @@ next-env.d.ts
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/*.code-snippets
+
+.nova/*

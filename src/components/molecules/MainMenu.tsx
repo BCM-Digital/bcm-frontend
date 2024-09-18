@@ -7,7 +7,7 @@ type MainMenuProps = {
 }
 
 function MainMenu({ menu }: MainMenuProps): ReactElement | null {
-	const classes = clsx('menu-items flex flex-col gap-5')
+	const classes = clsx('menu-items flex flex-col gap-5 items-end')
 
 	return menu.menuItem && menu.menuItem.length ? (
 		<ul role="menu" className={classes}>

@@ -30,9 +30,6 @@ function ArchiveBlock({
 	const [filteredPosts, setFilteredPosts] = useState<Post[] | undefined>(
 		undefined
 	)
-	const [filteredProjects, setFilteredProjects] = useState<
-		Project[] | undefined
-	>(undefined)
 
 	const [pageNumber, setPageNumber] = useState<number>(1)
 	const [hasNextPage, setHasNextPage] = useState<boolean | undefined>(undefined)
