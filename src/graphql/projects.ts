@@ -6,6 +6,7 @@ import {
 	MEDIA_BLOCK,
 	TABS_BLOCK,
 } from '@graphql/blocks'
+import { CATEGORIES } from '@graphql/categories'
 import { LINK_FIELDS } from '@graphql/link'
 import { MEDIA_FIELDS } from '@graphql/media'
 import { META_FIELDS } from '@graphql/meta'
@@ -27,6 +28,7 @@ export const PROJECT = `
 		id
 		title
 		slug
+		categories {title}
 		thumbnail ${MEDIA_FIELDS}
 		pageHead {
 			type

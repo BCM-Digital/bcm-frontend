@@ -128,32 +128,19 @@ export const PROJECT_GRID = `
 				id
 				slug
 				title
+				categories {title}
 				thumbnail ${MEDIA_FIELDS}
-				pageHead {
-					type
-					subhead
-					title
-					content
-					links {
-						link ${LINK_FIELDS()}
-					}
-					media ${MEDIA_FIELDS}
-				}
 			}
 			post {
 				id
 				slug
 				title
+				categories {title}
 				thumbnail ${MEDIA_FIELDS}
-				pageHead {
-					type
-					subhead
-					title
-					content
-					media ${MEDIA_FIELDS}
-				}
 			}
 			image ${MEDIA_FIELDS}
+			addLink
+			link ${LINK_FIELDS()}
 			tileText
 			invertBackground
 		}

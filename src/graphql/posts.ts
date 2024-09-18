@@ -27,6 +27,7 @@ export const POST = `
         id
         title
         slug
+		categories
         thumbnail ${MEDIA_FIELDS}
         pageHead {
           type

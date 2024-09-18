@@ -56,14 +56,12 @@ export default async function RootLayout({
 			</head>
 			<GoogleTagManager />
 			<body className={classes}>
-				<Providers>
+				<Corridor>
+					<SiteHeader header={header} contact={contact} />
+					{children}
+					<SiteFooter contact={contact} footer={footer} />
 					<IconSprite />
-					<Corridor>
-						<SiteHeader header={header} contact={contact} />
-						{children}
-						<SiteFooter contact={contact} footer={footer} />
-					</Corridor>
-				</Providers>
+				</Corridor>
 			</body>
 		</html>
 	)
